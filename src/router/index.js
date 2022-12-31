@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -8,16 +8,43 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/homemade',
+    name: 'homemade',
+    component: () => import(/* webpackChunkName: "homemade" */ '../views/HomeMade.vue')
+  },
+  {
+    path: '/dryfood',
+    name: 'dryfood',
+    component: () => import(/* webpackChunkName: "dryfood" */ '../views/DryFood.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: () => import(/* webpackChunkName: "chat" */ '../views/Chat.vue')
+  },
+  {
+    path: '/readytocook',
+    name: 'readytocook',
+    component: () => import(/* webpackChunkName: "readytocook" */ '../views/ReadyToCook.vue')
+  },
+  {
+    path: '/restaurant',
+    name: 'restaurant',
+    component: () => import(/* webpackChunkName: "restaurant" */ '../views/Restaurant.vue')
+  },
+  {
+    path: '/userlocation',
+    name: 'userlocation',
+    component: () => import(/* webpackChunkName: "userlocation" */ '../views/UserLocation.vue')
+  },
 ]
 
 const router = new VueRouter({

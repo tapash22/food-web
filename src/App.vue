@@ -1,32 +1,44 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <TheNavigation />
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import TheNavigation from './components/TheNavigation.vue';
+import { Cometchat } from '@cometchat-pro/chat'
 
-nav {
-  padding: 30px;
-}
+export default {
+  name: "App",
+  data: () => ({
+    //
+  }),
+  components: { TheNavigation },
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  created() {
+    this.initializeComet();
+  },
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  methods: {
+    initializeComet() {
+      const APP_ID = '2244901bb4aef3c0';
+      const REGION = 'us';
+      const appSetting = new Cometchat.AppSettingsBuilder()
+        .subscribePresenceForAllUsers()
+        .setRegion(REGION)
+        .build();
+
+      Cometchat.init(APP_ID, appSetting).then(
+        () => {
+          console.log('initialize app');
+        },
+        (error) => {
+          console.log('have some error', error);
+        })
+    }
+  }
+};
+</script>
