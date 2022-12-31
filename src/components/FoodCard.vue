@@ -1,21 +1,26 @@
 <template>
     <div class="food-card">
-        <v-card>
-            <v-img height="200px" src="../assets/f3.png">
-                <v-card-text class="pink lighten-2 d-block pa-0 ma-0">
-                    <v-card-title class="black--text text-caption text-left " color="info">{{ item.name }}</v-card-title>
-                    <v-card-subtitle
-                        class="white--text h-50 pa-0 text-right mx-2 text-body-1">{{ item.price }}</v-card-subtitle>
-                </v-card-text>
+        <router-link :to="{ name:'fooddetails' ,params:{id:item.id}}" class="text-decoration-none">
+            <v-card>
+                <v-img height="200px" width="250" class="background-cover background-center"
+                    src="https://5.imimg.com/data5/QG/KY/MY-29310128/cashew-nut-dry-food-500x500.jpg">
+                    <v-card-text class="pink lighten-2 d-block pa-0 ma-0">
+                        <v-card-title class="black--text text-caption text-left " color="info">{{ item.name}}</v-card-title>
+                        <v-card-subtitle class="white--text h-50 pa-0 text-right mx-2 text-body-1">{{ item.price
+                            }}</v-card-subtitle>
+                    </v-card-text>
 
-            </v-img>
-        </v-card>
+                </v-img>
+            </v-card>
+        </router-link>
+
     </div>
 </template>
 
 <script>
 export default {
-    name:'food-card',
-    props:['item']
+    name: 'food-card',
+    props: ['item'],
+    
 }
 </script>
