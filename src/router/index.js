@@ -21,16 +21,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "dryfood" */ '../views/DryFood.vue')
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
-  },
-  {
-    path: '/chat',
-    name: 'chat',
-    component: () => import(/* webpackChunkName: "chat" */ '../views/Chat.vue')
-  },
-  {
     path: '/readytocook',
     name: 'readytocook',
     component: () => import(/* webpackChunkName: "readytocook" */ '../views/ReadyToCook.vue')
@@ -41,14 +31,24 @@ const routes = [
     component: () => import(/* webpackChunkName: "fooddetails" */ '../views/FoodDetails.vue')
   },
   {
-    path: '/restaurant',
-    name: 'restaurant',
-    component: () => import(/* webpackChunkName: "restaurant" */ '../views/Restaurant.vue')
+    path: '/restaurants',
+    name: 'restaurant-list',
+    component: () => import(/* webpackChunkName: "restaurant-list" */ '../views/RestaurantList.vue')
   },
   {
     path: '/userlocation',
     name: 'userlocation',
     component: () => import(/* webpackChunkName: "userlocation" */ '../views/UserLocation.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: () => import(/* webpackChunkName: "chat" */ '../views/Chat.vue')
   },
 ]
 

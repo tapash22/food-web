@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 // import dryModule from './modules/dryfood/index';
 // import readyModule from './modules/readytocook/index';
 import productModule from './modules/products/index'
-import restaurentModule from './modules/restaurant/index';
+import resturentModule from './modules/resturent/index'
 
 Vue.use(Vuex)
 
@@ -66,6 +66,6 @@ export default new Vuex.Store({
   },
   modules: {
     products: productModule,
-    restaurentm : restaurentModule
+    resturents : resturentModule
   }
 })

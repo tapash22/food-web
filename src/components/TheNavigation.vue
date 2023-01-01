@@ -183,8 +183,8 @@ export default {
                 {
                     id: 5,
                     icon: 'mdi-food-fork-drink',
-                    name: 'Restaurant',
-                    path: '/restaurant'
+                    name: 'Restaurants',
+                    path: '/restaurants'
                 },
 
             ]
