@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import homemadeModule from './modules/homemade/index';
-import dryModule from './modules/dryfood/index';
-import readyModule from './modules/readytocook/index';
+// import homemadeModule from './modules/homemade/index';
+// import dryModule from './modules/dryfood/index';
+// import readyModule from './modules/readytocook/index';
+import productModule from './modules/products/index'
 import restaurentModule from './modules/restaurant/index';
 
 Vue.use(Vuex)
@@ -64,9 +65,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    homem : homemadeModule,
-    drym  :dryModule,
-    readm : readyModule,
+    products: productModule,
     restaurentm : restaurentModule
   }
 })
