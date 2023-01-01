@@ -10,7 +10,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import Resturent from './Resturent.vue';
+import Resturent from '@/components/Resturent.vue'
 
 export default {
   name: 'restaurant-list',

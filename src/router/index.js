@@ -36,6 +36,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "restaurant-list" */ '../views/RestaurantList.vue')
   },
   {
+    path: '/restaurantdetails/:id',
+    name: 'restaurantdetails',
+    component: () => import(/* webpackChunkName: "restaurantdetails" */ '../views/RestaurantDetails.vue')
+  },
+  {
     path: '/userlocation',
     name: 'userlocation',
     component: () => import(/* webpackChunkName: "userlocation" */ '../views/UserLocation.vue')
