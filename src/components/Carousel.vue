@@ -8,10 +8,10 @@
       </div>
     </div>
 
-    <!-- <div class="swiper-pagination"></div> -->
-
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+<!-- 
+    <div class="swiper-button-prev" ></div>
+    <div class="swiper-button-next"></div> -->
 
     <div class="swiper-scrollbar"></div>
   </div>
@@ -23,43 +23,14 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import ResturentFood from '@/components/ResturentFood.vue'
+import { mapState } from 'vuex'
 
 export default {
-  data() {
-    return {
-      lists: [
-        {
-          id: 1,
-          name: 'hi',
-          tag: 'you'
-        },
-        {
-          id: 2,
-          name: 'ii',
-          tag: 'you'
-        },
-        {
-          id: 3,
-          name: 'uu',
-          tag: 'you'
-        },
-        {
-          id: 4,
-          name: 'hti',
-          tag: 'you'
-        },
-        {
-          id: 5,
-          name: 'itti',
-          tag: 'you'
-        },
-        {
-          id: 6,
-          name: 'uttu',
-          tag: 'you'
-        },
-      ]
-    }
+
+  computed:{
+    ...mapState('resturents',{
+      lists:'lists'
+    })
   },
 
   components:{
@@ -100,6 +71,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  margin-top:-50px;
+  height: 400px;
+}
+.swiper-button-next{
+  font-size: 1rem;
 }
 </style>
