@@ -55,6 +55,11 @@ const routes = [
     name: 'chat',
     component: () => import(/* webpackChunkName: "chat" */ '../views/Chat.vue')
   },
+  {
+    path: '/carousel',
+    name: 'carousel',
+    component: () => import(/* webpackChunkName: "carousel" */ '@/components/Carousel.vue')
+  },
 ]
 
 const router = new VueRouter({
