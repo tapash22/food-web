@@ -21,26 +21,7 @@
                     <v-card-subtitle class="text-uppercase">resturent food list</v-card-subtitle>
                     <v-card-text>
                         <Carousel />
-                        <!-- <v-card height="400">
-                                        <v-img
-                                            src="https://i.ndtvimg.com/i/2017-12/dry-fruits-are-good-for-heart-health_650x400_61513059621.jpg?q=50" />
-                                        <v-card-text class="pa-0">
-                                            <v-card-title>{{ foods.name }}</v-card-title>
-                                            <v-card-subtitle>{{ foods.price }}</v-card-subtitle>
-                                            <v-rating size="18" :value="foods.rating" half-icon color="green"
-                                                dense></v-rating>
-                                        </v-card-text>
-                                        <v-card-text class="d-flex">
-                                            <v-row>
-                                                <v-col>
-                                                    <v-chip color="red" class="white--text my-2 "
-                                                        v-for="details in foods.details" :key="details">
-                                                        {{ details }}
-                                                    </v-chip>
-                                                </v-col>
-                                            </v-row>
-                                        </v-card-text>
-                                    </v-card> -->
+         
                     </v-card-text>
                 </v-card>
             </v-col>

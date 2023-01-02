@@ -13,7 +13,7 @@
                     <v-card-subtitle class="text-body-1">Price: {{foodDetails.price}}</v-card-subtitle>
 
                     <v-card-text class="pa-0">
-                        <p class="pa-5 text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo modi animi ad quisquam
+                        <p class="pa-2 mx-2 text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo modi animi ad quisquam
                             accusantium at ipsam, fuga delectus facere repellendus molestiae quia incidunt tempora
                             eligendi architecto voluptatem harum nihil nisi!</p>
                     </v-card-text>
