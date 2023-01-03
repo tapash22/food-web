@@ -22,7 +22,7 @@
                             </v-card-subtitle>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn class="mx-5">
+                            <v-btn class="mx-5" @click="addToCart()">
                                 add to card
                             </v-btn>
                         </v-card-actions>
@@ -53,6 +53,15 @@ export default {
 
         })
     },
+
+    methods:{
+            addToCart() {
+            this.$store.dispatch("cart/addProductToCard", {
+                product: this.item,
+                quantity: 1
+            });
+        },
+    }
 
 }
 </script>

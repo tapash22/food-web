@@ -4,11 +4,27 @@
             <v-app-bar-nav-icon @click="mini = !mini"></v-app-bar-nav-icon>
             <v-app-bar-title class="title">FoodApp</v-app-bar-title>
             <v-spacer></v-spacer>
-          <v-icon color="red">mdi-cart</v-icon>
-            <!-- <v-btn class="mx-2 orange accent-2" @click="dialog=false"><router-link class="white--text text-decoration-none" to="/login">Login</router-link></v-btn> -->
+
+            <v-menu offset-y bottom left rounded class="pa-0">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-badge  :content="cartItemCount" offset-x="20" offset-y="20" color="red" right overlap>
+                        <v-btn color="white text-h6" icon dark v-bind="attrs" v-on="on">
+                            <v-icon large color="red" class="mt-2">
+                                mdi-food-takeout-box
+                            </v-icon>
+                        </v-btn>
+                    </v-badge>
+                </template>
+
+                <div @click="$event.stopPropagation()">
+                    <MiniCard />
+                </div>
+
+            </v-menu>
+            
             <v-dialog v-model="dialog" max-width="600px" min-width="360px">
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn text class="mx-2" color="red"  v-bind="attrs" v-on="on">
+                    <v-btn text class="mx-2" color="red" v-bind="attrs" v-on="on">
                         Login
                     </v-btn>
                 </template>
@@ -114,10 +130,13 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
+
     </nav>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import MiniCard from './MiniCard.vue';
 export default {
     data() {
         return {
@@ -125,8 +144,8 @@ export default {
             dialog: false,
             tab: 0,
             tabs: [
-                { id:1,name: "Login", icon: "mdi-account" },
-                { id:2, name: "Register", icon: "mdi-account-outline" }
+                { id: 1, name: "Login", icon: "mdi-account" },
+                { id: 2, name: "Register", icon: "mdi-account-outline" }
             ],
             valid: true,
 
@@ -190,10 +209,18 @@ export default {
             ]
         }
     },
+
+    components:{
+        MiniCard
+    },
+
     computed: {
         passwordMatch() {
             return () => this.password === this.verify || "Password must match";
-        }
+        },
+        ...mapGetters('cart',{
+            cartItemCount:'cartItemCount'
+        })
     },
 
     methods: {
@@ -211,7 +238,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-
-</style>
