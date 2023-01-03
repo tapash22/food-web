@@ -120,8 +120,8 @@ export default {
         }
     },
     getters: {
-        getResturentById: (state) => (name) => {
-            return state.resturents.find(resturent => resturent.name === name)
+        getResturentById: (state) => (id) => {
+            return state.resturents.find(resturent => resturent.id === id)
         },
         getResturentFoodById: (state) => (id) => {
             return state.lists.find(list => list.id === id)

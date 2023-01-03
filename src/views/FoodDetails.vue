@@ -21,6 +21,11 @@
                                 adipisci exercitationem tenetur! Molestiae sequi aliquid nemo blanditiis.
                             </v-card-subtitle>
                         </v-card-text>
+                        <v-card-actions>
+                            <v-btn>
+                                add to card
+                            </v-btn>
+                        </v-card-actions>
                     </v-card>
                 </v-col>
             </v-row>
