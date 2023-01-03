@@ -1,7 +1,7 @@
 <template>
     <div class="food-details">
         <v-container>
-            <v-row>
+            <v-row class="my-5">
                 <v-col cols="12" md="4" lg="4" xl="4" sm="12">
                     <v-sheet elevation="3" rounded="lg">
                         <v-img :src="item.image" />
@@ -22,7 +22,7 @@
                             </v-card-subtitle>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn>
+                            <v-btn class="mx-5">
                                 add to card
                             </v-btn>
                         </v-card-actions>

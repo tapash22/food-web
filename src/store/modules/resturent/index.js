@@ -116,6 +116,30 @@ export default {
                     link: 'https://vuetifyjs.com/en/styles/text-and-typography/#typography',
                     image: 'https://www.shutterstock.com/image-vector/facade-restaurant-vector-flat-design-260nw-727437238.jpg',
                 },
+                {
+                  id: 9,
+                  name: 'Five Star',
+                  link: 'https://vuetifyjs.com/en/styles/text-and-typography/#typography',
+                  image: 'https://www.shutterstock.com/image-vector/facade-restaurant-vector-flat-design-260nw-727437238.jpg',
+              },
+              {
+                  id: 10,
+                  name: 'Pitha Mela',
+                  link: 'https://vuetifyjs.com/en/styles/text-and-typography/#typography',
+                  image: 'https://www.shutterstock.com/image-vector/facade-restaurant-vector-flat-design-260nw-727437238.jpg',
+              },
+              {
+                  id: 11,
+                  name: 'Sandra',
+                  link: 'https://vuetifyjs.com/en/styles/text-and-typography/#typography',
+                  image: 'https://www.shutterstock.com/image-vector/facade-restaurant-vector-flat-design-260nw-727437238.jpg',
+              },
+              {
+                  id: 12,
+                  name: 'New One',
+                  link: 'https://vuetifyjs.com/en/styles/text-and-typography/#typography',
+                  image: 'https://www.shutterstock.com/image-vector/facade-restaurant-vector-flat-design-260nw-727437238.jpg',
+              },
             ]
         }
     },

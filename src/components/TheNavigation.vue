@@ -4,7 +4,7 @@
             <v-app-bar-nav-icon @click="mini = !mini"></v-app-bar-nav-icon>
             <v-app-bar-title class="title">FoodApp</v-app-bar-title>
             <v-spacer></v-spacer>
-            <v-text-field class="shrink" dense hide-details outlined hint="search" rounded append-icon="mdi-magnify"></v-text-field>
+          <v-icon color="red">mdi-cart</v-icon>
             <!-- <v-btn class="mx-2 orange accent-2" @click="dialog=false"><router-link class="white--text text-decoration-none" to="/login">Login</router-link></v-btn> -->
             <v-dialog v-model="dialog" max-width="600px" min-width="360px">
                 <template v-slot:activator="{ on, attrs }">
