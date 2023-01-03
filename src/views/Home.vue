@@ -95,19 +95,20 @@
     <v-row class="d-flex justify-center">
       <v-col col="10" sm="10" md="8" lg="8" xl="8" class="d-block">
         <v-sheet class="d-flex justify-center">
-    
-            <v-icon class="text-h4" color="red">
-              mdi-human-greeting-variant
-            </v-icon>
- 
-          <h2 class="text-body-1 mx-2 my-5">How hungry are you today?</h2>
+
+          <v-icon class="text-h4" color="red">
+            mdi-human-greeting-variant
+          </v-icon>
+
+          <h2 class="text-body-1 mx-2 my-5 text-h1 font-weight-medium">Hungry naki?</h2>
         </v-sheet>
 
-        <v-text-field class="shrink " dense hide-details outlined hint="search" rounded append-icon="mdi-magnify"></v-text-field>
+        <v-text-field class="shrink " dense hide-details outlined hint="search" rounded
+          append-icon="mdi-magnify"></v-text-field>
       </v-col>
     </v-row>
     <v-row class="my-5">
-      <v-sheet class="d-flex justify-space-between my-5" rounded="xl" width="100%" height="50" elevation="5">
+      <v-sheet class="d-flex justify-space-between my-5" rounded="lg" width="100%" height="50" elevation="5">
         <h2 class="text-h6 mx-5 my-2">Resturent</h2>
         <v-btn text class=" red--text my-2 mx-2" rounded="xl" @click="onClickResturent">
           view all
@@ -120,20 +121,7 @@
     </v-row>
 
     <v-row class="my-5">
-      <v-sheet class="d-flex justify-space-between my-2" width="100%" height="50" rounded="xl" elevation="5">
-        <h2 class="text-h6 mx-5 my-2">Dry Food</h2>
-        <v-btn text class=" red--text my-2 mx-2" rounded="xl" @click="onClickDry">
-          view all
-        </v-btn>
-      </v-sheet>
-      <v-col cols="12" md="3" sm="12" lg="3" xl="3" v-for="index in countLength" :key="index"
-        class="my-5 pa-0 d-flex justify-center">
-        <FoodCard :item="dryfoodList[index - 1]" />
-      </v-col>
-    </v-row>
-
-    <v-row class="my-5">
-      <v-sheet class="d-flex justify-space-between my-2" width="100%" height="50" rounded="xl" elevation="5">
+      <v-sheet class="d-flex justify-space-between my-2" width="100%" height="50" rounded="lg" elevation="5">
         <h2 class="text-h6 mx-5 my-2">Home Made</h2>
         <v-btn text class=" red--text my-2 mx-2" rounded="xl" @click="onClickHome">
           view all
@@ -146,7 +134,7 @@
     </v-row>
 
     <v-row class="my-5">
-      <v-sheet class="d-flex justify-space-between my-2" width="100%" height="50" rounded="xl" elevation="5">
+      <v-sheet class="d-flex justify-space-between my-2" width="100%" height="50" rounded="lg" elevation="5">
         <h2 class="text-h6 mx-5 my-2">Ready to coock</h2>
         <v-btn text class=" red--text my-2 mx-2" rounded="xl" @click="onClickRcoock">
           view all
@@ -157,6 +145,20 @@
         <FoodCard :item="readycoockList[index - 1]" />
       </v-col>
     </v-row>
+
+    <v-row class="my-5">
+      <v-sheet class="d-flex justify-space-between my-2" width="100%" height="50" rounded="lg" elevation="5">
+        <h2 class="text-h6 mx-5 my-2">Dry Food</h2>
+        <v-btn text class=" red--text my-2 mx-2" rounded="xl" @click="onClickDry">
+          view all
+        </v-btn>
+      </v-sheet>
+      <v-col cols="12" md="3" sm="12" lg="3" xl="3" v-for="index in countLength" :key="index"
+        class="my-5 pa-0 d-flex justify-center">
+        <FoodCard :item="dryfoodList[index - 1]" />
+      </v-col>
+    </v-row>
+
 
   </v-container>
 </template>
