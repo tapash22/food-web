@@ -1,141 +1,127 @@
 <template>
-    <nav>
-        <v-app-bar app>
-            <v-app-bar-nav-icon @click="mini = !mini"></v-app-bar-nav-icon>
-            <v-app-bar-title class="title">FoodApp</v-app-bar-title>
-            <v-spacer></v-spacer>
+<nav>
+    <v-app-bar app>
+        <v-app-bar-nav-icon v-if="$vuetify.breakpoint.smAndUp"  @click="mini = !mini"></v-app-bar-nav-icon>
+             <v-app-bar-nav-icon v-else  @click="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-title class="title">
+            <router-link to="/" class="text-decoration-none black--text">FoodApp</router-link>
+        </v-app-bar-title>
+        <v-spacer></v-spacer>
 
-            <v-menu offset-y bottom left rounded class="pa-0">
-                <template v-slot:activator="{ on, attrs }">
-                    <v-badge  :content="cartItemCount" offset-x="20" offset-y="20" color="red" right overlap>
-                        <v-btn color="white text-h6" icon dark v-bind="attrs" v-on="on">
-                            <v-icon large color="red" class="mt-2">
-                                mdi-food-takeout-box
-                            </v-icon>
-                        </v-btn>
-                    </v-badge>
-                </template>
-
-                <div @click="$event.stopPropagation()">
-                    <MiniCard />
-                </div>
-
-            </v-menu>
-            
-            <v-dialog v-model="dialog" max-width="600px" min-width="360px">
-                <template v-slot:activator="{ on, attrs }">
-                    <v-btn text class="mx-2" color="red" v-bind="attrs" v-on="on">
-                        Login
+        <v-menu offset-y bottom left rounded class="pa-0">
+            <template v-slot:activator="{ on, attrs }">
+                <v-badge :content="cartItemCount" offset-x="20" offset-y="20" color="red" right overlap>
+                    <v-btn color="white text-h6" icon dark v-bind="attrs" v-on="on">
+                        <v-icon large color="red" class="mt-2">
+                            mdi-food-takeout-box
+                        </v-icon>
                     </v-btn>
-                </template>
-                <div>
-                    <v-tabs v-model="tab" show-arrows background-color="deep-purple lighten-4" icons-and-text grow>
-                        <v-tabs-slider color="red lightn-4"></v-tabs-slider>
-                        <v-tab v-for="i in tabs" :key="i.id">
-                            <v-icon large>{{ i.icon }}</v-icon>
-                            <div class="caption py-1">{{ i.name }}</div>
-                        </v-tab>
-                        <v-tab-item>
-                            <v-card class="px-4">
-                                <v-card-text>
-                                    <v-form ref="loginForm" v-model="valid" lazy-validation>
-                                        <v-row>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="loginEmail" :rules="loginEmailRules"
-                                                    label="E-mail" required></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="loginPassword"
-                                                    :append-icon="show1 ? 'eye' : 'eye-off'"
-                                                    :rules="[rules.required, rules.min]"
-                                                    :type="show1 ? 'text' : 'password'" name="input-10-1"
-                                                    label="Password" hint="At least 8 characters" counter
-                                                    @click:append="show1 = !show1"></v-text-field>
-                                            </v-col>
-                                            <v-col class="d-flex" cols="12" sm="6" xsm="12">
-                                            </v-col>
-                                            <v-spacer></v-spacer>
-                                            <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                                <v-btn x-large block :disabled="!valid" color="success"
-                                                    @click="validate"> Login </v-btn>
-                                            </v-col>
-                                        </v-row>
-                                    </v-form>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
+                </v-badge>
+            </template>
 
-                        <v-tab-item>
-                            <v-card class="px-4">
-                                <v-card-text>
-                                    <v-form ref="registerForm" v-model="valid" lazy-validation>
-                                        <v-row>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="firstName" :rules="[rules.required]"
-                                                    label="First Name" maxlength="20" required></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="lastName" :rules="[rules.required]"
-                                                    label="Last Name" maxlength="20" required></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="email" :rules="emailRules" label="E-mail"
-                                                    required></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="password"
-                                                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                                                    :rules="[rules.required, rules.min]"
-                                                    :type="show1 ? 'text' : 'password'" name="input-10-1"
-                                                    label="Password" hint="At least 8 characters" counter
-                                                    @click:append="show1 = !show1"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-text-field block v-model="verify"
-                                                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                                                    :rules="[rules.required, passwordMatch]"
-                                                    :type="show1 ? 'text' : 'password'" name="input-10-1"
-                                                    label="Confirm Password" counter @click:append="show1 = !show1">
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-spacer></v-spacer>
-                                            <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                                                <v-btn x-large block :disabled="!valid" color="success"
-                                                    @click="validate">Register</v-btn>
-                                            </v-col>
-                                        </v-row>
-                                    </v-form>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                    </v-tabs>
-                </div>
-            </v-dialog>
-        </v-app-bar>
+            <div @click="$event.stopPropagation()">
+                <MiniCard />
+            </div>
 
-        <v-navigation-drawer app v-model="drawer" :mini-variant.sync="mini" permanent>
-            <v-list-item class="text-center d-block my-5">
-                <v-list-item-avatar>
-                    <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
-                </v-list-item-avatar>
-                <v-list-item-title class="my-2">FoodMenu</v-list-item-title>
+        </v-menu>
+
+        <v-dialog v-model="dialog" max-width="600px" min-width="360px">
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn text class="mx-2" color="red" v-bind="attrs" v-on="on">
+                    Login
+                </v-btn>
+            </template>
+            <div>
+                <v-tabs v-model="tab" show-arrows background-color="deep-purple lighten-4" icons-and-text grow>
+                    <v-tabs-slider color="red lightn-4"></v-tabs-slider>
+                    <v-tab v-for="i in tabs" :key="i.id">
+                        <v-icon large>{{ i.icon }}</v-icon>
+                        <div class="caption py-1">{{ i.name }}</div>
+                    </v-tab>
+                    <v-tab-item>
+                        <v-card class="px-4">
+                            <v-card-text>
+                                <v-form ref="loginForm" v-model="valid" lazy-validation>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="loginEmail" :rules="loginEmailRules" label="E-mail" required></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="loginPassword" :append-icon="show1 ? 'eye' : 'eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Password" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
+                                        </v-col>
+                                        <v-col class="d-flex" cols="12" sm="6" xsm="12">
+                                        </v-col>
+                                        <v-spacer></v-spacer>
+                                        <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="validate"> Login </v-btn>
+                                        </v-col>
+                                    </v-row>
+                                </v-form>
+                            </v-card-text>
+                        </v-card>
+                    </v-tab-item>
+
+                    <v-tab-item>
+                        <v-card class="px-4">
+                            <v-card-text>
+                                <v-form ref="registerForm" v-model="valid" lazy-validation>
+                                    <v-row>
+                                        <v-col cols="12" sm="6" md="6">
+                                            <v-text-field v-model="firstName" :rules="[rules.required]" label="First Name" maxlength="20" required></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12" sm="6" md="6">
+                                            <v-text-field v-model="lastName" :rules="[rules.required]" label="Last Name" maxlength="20" required></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="password" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Password" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <v-text-field block v-model="verify" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.required, passwordMatch]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Confirm Password" counter @click:append="show1 = !show1">
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-spacer></v-spacer>
+                                        <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="validate">Register</v-btn>
+                                        </v-col>
+                                    </v-row>
+                                </v-form>
+                            </v-card-text>
+                        </v-card>
+                    </v-tab-item>
+                </v-tabs>
+            </div>
+        </v-dialog>
+    </v-app-bar>
+
+    <v-navigation-drawer app v-model="drawer"  :mini-variant.sync="mini" :permanent="$vuetify.breakpoint.smAndUp">
+        <v-list-item class="text-center d-block my-5">
+            <v-list-item-avatar color="red">
+                <v-icon color="white">mdi-food-fork-drink</v-icon>
+                <!-- <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img> -->
+            </v-list-item-avatar>
+            <v-list-item-title class="my-2">FoodMenu</v-list-item-title>
+        </v-list-item>
+        <v-divider></v-divider>
+        <v-list dense v-for="item in items" :key="item.id">
+            <v-list-item color="indigo" :to="item.path" active-class="light-green darken-3">
+                <v-list-item-icon>
+                    <v-icon color="red darken-2">{{ item.icon }}</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title class="black--text ">{{ item.name }}</v-list-item-title>
             </v-list-item>
-            <v-divider></v-divider>
-            <v-list dense v-for="item in items" :key="item.id">
-                <v-list-item color="indigo" :to="item.path" active-class="light-green darken-3">
-                    <v-list-item-icon>
-                        <v-icon color="red darken-2">{{ item.icon }}</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title class="black--text ">{{ item.name }}</v-list-item-title>
-                </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
+        </v-list>
+    </v-navigation-drawer>
 
-    </nav>
+</nav>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import {
+    mapGetters
+} from 'vuex';
 import MiniCard from './MiniCard.vue';
 export default {
     data() {
@@ -143,9 +129,16 @@ export default {
 
             dialog: false,
             tab: 0,
-            tabs: [
-                { id: 1, name: "Login", icon: "mdi-account" },
-                { id: 2, name: "Register", icon: "mdi-account-outline" }
+            tabs: [{
+                    id: 1,
+                    name: "Login",
+                    icon: "mdi-account"
+                },
+                {
+                    id: 2,
+                    name: "Register",
+                    icon: "mdi-account-outline"
+                }
             ],
             valid: true,
 
@@ -174,8 +167,7 @@ export default {
             dialogm1: '',
             drawer: false,
             mini: true,
-            items: [
-                {
+            items: [{
                     id: 1,
                     icon: 'mdi-home',
                     name: 'Home',
@@ -210,7 +202,7 @@ export default {
         }
     },
 
-    components:{
+    components: {
         MiniCard
     },
 
@@ -218,8 +210,8 @@ export default {
         passwordMatch() {
             return () => this.password === this.verify || "Password must match";
         },
-        ...mapGetters('cart',{
-            cartItemCount:'cartItemCount'
+        ...mapGetters('cart', {
+            cartItemCount: 'cartItemCount'
         })
     },
 
