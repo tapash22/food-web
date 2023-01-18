@@ -82,10 +82,7 @@
 </template>
 
 <script>
-import {
-    mapGetters
-} from 'vuex'
-import Carousel from '@/components/Carousel.vue'
+import {mapGetters} from 'vuex'
 import ResturentDetailDialog from '@/components/ResturentDetailDialog.vue';
 import TabDetails from '@/components/TabDetails.vue';
 
@@ -98,6 +95,29 @@ export default {
             tabs: null,
             value: 0,
             dialog: false,
+            tablistss: [{
+                    id: 1,
+                    name: 'Chicken',
+                    text: 'no Chicken  yet'
+                },
+                {
+                    id: 2,
+                    name: 'Snakes',
+                    text: 'no Snakes yet'
+                },
+                {
+                    id: 3,
+                    name: 'Vegetable',
+                    text: 'no Vegetable  yet'
+                },
+                {
+                    id: 4,
+                    name: 'Starters',
+                    text: 'no Starters yet'
+                },
+            ],
+
+            cards: ['Chicken', 'Snakes', 'Vegetable', 'Starters'],
             totals: [{
                     id: 1,
                     name: 'Subtotal',
@@ -217,29 +237,6 @@ export default {
                 },
             ],
 
-            tablistss: [{
-                    id: 1,
-                    name: 'Chicken',
-                    text: 'no Chicken  yet'
-                },
-                {
-                    id: 2,
-                    name: 'Snakes',
-                    text: 'no Snakes yet'
-                },
-                {
-                    id: 3,
-                    name: 'Vegetable',
-                    text: 'no Vegetable  yet'
-                },
-                {
-                    id: 4,
-                    name: 'Starters',
-                    text: 'no Starters yet'
-                },
-            ],
-
-            cards: ['Chicken', 'Snakes','Vegetable','Starters'],
         }
     },
     computed: {
@@ -253,7 +250,6 @@ export default {
 
     components: {
         TabDetails,
-        Carousel,
         ResturentDetailDialog,
 
     },
