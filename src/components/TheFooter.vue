@@ -1,8 +1,8 @@
 <template>
 <v-footer>
     <v-row>
-        <v-col cols="12" sm="12" md="12" lg="12" xl="12">
-            <v-list class="d-flex justify-space-between">
+        <v-col cols="12" sm="12" md="12" lg="12" xl="12" class="pa-0">
+            <v-list class="d-flex justify-space-between pa-0">
                 <v-list-item-title class="mx-5 text-h6 font-weight-bold align-center">FoodApp</v-list-item-title>
                 <v-list-item class="d-flex justify-end">
                     <v-icon class="mx-2 text-h4" v-for="icon in icons" :key="icon">
@@ -14,7 +14,7 @@
     </v-row>
     <v-row class="white ">
         <v-col cols="12" sm="6" md="3" lg="3" xl="3">
-            <h2 class="text-body-1 font-weight-bold mx-5 my-5">2022@FoodApp</h2>
+            <h2 class="text-body-1  mx-5 my-5">&copy;2023 FoodApp</h2>
         </v-col>
         <v-col cols="12" sm="6" md="3" lg="3" xl="3">
             <p class="text-body-2 mx-2 my-5">
