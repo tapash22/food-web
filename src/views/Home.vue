@@ -18,40 +18,44 @@
 
         </v-col>
     </v-row>
-
-    <v-row class="my-2">
-        <TypeHeader name="Resturent" link="restaurants" />
-        <v-col cols="12" md="3" sm="12" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-5 pa-0 d-flex justify-center">
-            <Resturent :resturent="resturents[index - 1]" />
-        </v-col>
-    </v-row>
-
     <!-- search end-->
 
     <!-- resturent -->
+    <v-row class="my-2 d-flex justify-space-around">
+        <TypeHeader name="Resturent" link="restaurants" />
+        <v-col cols="12" sm="12" md="3" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-2 pa-0">
+            <Resturent :resturent="resturents[index - 1]" />
+        </v-col>
+    </v-row>
+    <!-- resturent end-->
+
+    <!-- homemade -->
     <v-row class="my-2">
         <TypeHeader name="Home Made" link="homemade" />
-        <v-col cols="12" md="3" sm="12" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-5 pa-0 d-flex justify-center">
+        <v-col cols="6" md="3" sm="6" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-2 pa-0">
             <FoodCard :item="homemadeList[index - 1]" />
         </v-col>
     </v-row>
 
-    <!-- resturent end-->
+    <!-- homemade end-->
 
-    <!-- resturent -->
+    <!-- readytocook -->
     <v-row class="my-2">
         <TypeHeader name="Ready To Coock" link="readytocook" />
-        <v-col cols="12" md="3" sm="12" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-5 pa-0 d-flex justify-center">
+        <v-col cols="6" md="3" sm="6" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-2 pa-0">
             <FoodCard :item="readycoockList[index - 1]" />
         </v-col>
     </v-row>
+    <!-- readytocook end-->
 
+    <!-- dryfood -->
     <v-row class="my-2">
-     <TypeHeader name="Dry Foods" link="dryfood" />
-        <v-col cols="12" md="3" sm="12" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-5 pa-0 d-flex justify-center">
+        <TypeHeader name="Dry Foods" link="dryfood" />
+        <v-col cols="6" md="3" sm="6" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-2 pa-0">
             <FoodCard :item="dryfoodList[index - 1]" />
         </v-col>
     </v-row>
+    <!-- dryfood end-->
 
 </v-container>
 </template>

@@ -1,24 +1,29 @@
 <template>
-  <v-app>
+<v-app>
     <TheNavigation />
     <v-main>
-      <router-view />
+        <v-container>
+            <router-view />
+        </v-container>
+
     </v-main>
-  </v-app>
+</v-app>
 </template>
 
 <script>
 import TheNavigation from './components/TheNavigation.vue';
 
 export default {
-  name: "App",
-  data: () => ({
-    //
-  }),
-  components: { TheNavigation },
+    name: "App",
+    data: () => ({
+        //
+    }),
+    components: {
+        TheNavigation
+    },
 
-  methods: {
+    methods: {
 
-  }
+    }
 };
 </script>

@@ -1,11 +1,11 @@
 <template>
 <div class="resturent">
     <router-link :to="{ name: 'restaurantdetails', params: { id: resturent.id } }" class="text-decoration-none">
-        <v-card class="pa-0">
-            <v-img width="250" height="200" :src="resturent.image">
-                <v-card-title class="d-flex justify-space-between red--text  lighten-1 pa-1 text-body-2">
-                    <v-chip color="red lighten-1" class="white--text text-body-1">promo</v-chip>
-                    <v-chip pill  color="white" class="red--text text-body-2 font-weight-bold">35min</v-chip>
+        <v-card class=" mx-1">
+            <v-img width="280" height="250"  :src="resturent.image">
+                <v-card-title class="d-flex justify-space-between pa-0">
+                    <v-chip color="green lighten-1" class="white--text text-body-1 mx-2 my-2">promo</v-chip>
+                    <v-chip pill  color="white" class="black--text text-body-2 font-weight-bold">35min</v-chip>
                 </v-card-title>
             </v-img>
             <v-card-text class=" pa-0">
@@ -28,5 +28,9 @@ export default {
 </script>
 
 <style scoped>
+.resturent{
+    display: flex;
+    justify-content: center;
+}
 
 </style>
