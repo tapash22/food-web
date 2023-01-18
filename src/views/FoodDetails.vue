@@ -1,46 +1,106 @@
 <template>
-    <div class="food-details">
-        <v-container>
-            <v-row class="my-5">
-                <v-col cols="12" md="4" lg="4" xl="4" sm="12">
-                    <v-sheet elevation="3" rounded="lg">
-                        <v-img :src="item.image" />
-                    </v-sheet>
-                </v-col>
-                <v-col cols="12" md="8" lg="8" xl="8" sm="12">
-                    <v-card>
-                        <v-card-title>
-                            {{ item.name }}
-                        </v-card-title>
-                        <v-card-subtitle class="text-uppercase ">{{ item.category }}</v-card-subtitle>
-                        <v-card-text class="pa-0">
-                            <v-card-title class="red-text pa-0 mx-5">{{ item.price }}</v-card-title>
-                            <v-card-subtitle class="mx-3 my-2">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti minus, inventore
-                                quos, consequatur mollitia itaque atque, in magnam asperiores saepe distinctio animi
-                                adipisci exercitationem tenetur! Molestiae sequi aliquid nemo blanditiis.
-                            </v-card-subtitle>
-                        </v-card-text>
-                        <v-card-actions>
-                            <v-btn class="mx-5" @click="addToCart()">
-                                add to card
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-col>
-            </v-row>
+<div class="food-details">
+    <v-row>
+        <v-col cols="12" sm="12" md="8" lg="8" xl="8">
+            <div class="card">
+                <div class="image">
+                    <v-img :src="item.image" />
+                </div>
+                <div class="details">
+                    <v-list color="pa-4" elevation="2">
+                        <v-list-item-title class="text-body-1 font-weight-bold ">{{item.name}}</v-list-item-title>
+                        <v-rating dense size="14" value="4" color="green" />
+                        <v-list-item class="list-item ">
+                            <v-chip active-class="red" color="gray" class="text-body-2 font-weight-medium d-flex justify-center my-1" pill v-for="item in ingridients" :key="item">{{item}}</v-chip>
+                        </v-list-item>
+                        <v-list-item class="d-block">
+                            <v-list-item-title class="text-body-2 font-weight-bold ">Tk.{{item.price}}</v-list-item-title>
+                            <v-sheet class="pa-1 my-2 " elevation="0">
+                                <v-icon color="red" class="text-h6" @click="countMinus">mdi-delete</v-icon>
+                                <span class="mx-2 text-body-1">{{count}}</span>
+                                <v-icon color="red" class="text-h6" @click="countPlus">mdi-plus</v-icon>
+                            </v-sheet>
+                        </v-list-item>
+                        <v-list-item class="d-block">
+                            <v-list-item-title class="text-body-1 font-weight-bold">Details:</v-list-item-title>
+                            <p class="mx-2 text-body-2 text-justify my-2 green lighten-5 pa-3 rounded-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi praesentium dignissimos vero. Cumque, officia. Ratione officiis veniam minus quam sequi minima possimus qui vero laborum! Recusandae eveniet et ab fuga eaque facere dolorum adipisci tempora sed, consequuntur id odio reprehenderit!</p>
+                        </v-list-item>
 
-        </v-container>
-    </div>
+                        <v-list-item-action class="d-flex justif-start">
+                            <v-btn color="green" small @click="addToCart" >Add To Card</v-btn>
+                        </v-list-item-action>
+                    </v-list>
+                </div>
+            </div>
+        </v-col>
+
+        <v-col cols="12" sm="12" md="4" lg="4" xl="4">
+            <BillDetail :delivery="delivery" :foods="foodss" name="Grosarry" />
+        </v-col>
+
+    </v-row>
+</div>
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex';
+import {
+    mapActions,
+    mapGetters,
+    mapState
+} from 'vuex';
+import BillDetail from '@/components/BillDetail.vue';
+
 export default {
     name: 'fooddetails',
     data() {
         return {
             id: this.$route.params.id,
+count:0,
+            delivery: '30min',
+            foodss: [{
+                    id: 1,
+                    name: 'Fried Rice',
+                    image: '',
+                    price: 34,
+                    rating: 3.5,
+                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                },
+                {
+                    id: 2,
+                    name: 'Fried Rice',
+                    image: '',
+                    price: 34,
+                    rating: 3.5,
+                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                },
+                {
+                    id: 3,
+                    name: 'Fried Rice',
+                    image: '',
+                    price: 34,
+                    rating: 3.5,
+                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                },
+                {
+                    id: 4,
+                    name: 'Fried Rice',
+                    image: '',
+                    price: 34,
+                    rating: 3.5,
+                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                },
+                {
+                    id: 5,
+                    name: 'Fried Rice',
+                    image: '',
+                    price: 34,
+                    rating: 3.5,
+                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                },
+
+                
+            ],
+            ingridients:['poteto','capsicum','garlic','onion','vineger','cheese']
         }
     },
 
@@ -54,14 +114,52 @@ export default {
         })
     },
 
-    methods:{
-            addToCart() {
+    components: {
+        BillDetail,
+    },
+
+    methods: {
+        addToCart() {
             this.$store.dispatch("cart/addProductToCard", {
                 product: this.item,
                 quantity: 1
             });
         },
+        countPlus(){
+            this.count += 1;
+        },
+        countMinus(){
+            if(this.count == 0){
+                this.count -= 1;
+            }
+        }
+
     }
 
 }
 </script>
+
+<style scoped>
+.card{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 5px;
+}
+.card .image{
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+}
+.card .details{
+    display:block;
+    width: 100%;
+    height: 100%;
+}
+.list-item{
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    grid-gap: 5px;
+    height: 100px;
+}
+</style>

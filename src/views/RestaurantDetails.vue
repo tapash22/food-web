@@ -22,60 +22,15 @@
                 </v-card-subtitle>
 
                 <v-card-text>
-                    <!-- <template>
-                        <v-tabs v-model="tabs" centered>
-                            <v-tab v-for="n in 2" :key="n">
-                                Item {{ n }}
-                            </v-tab>
-                        </v-tabs>
-                    </template>
 
-                    <v-tabs-items v-model="tabs">
-                        <v-tab-item>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quidem accusantium doloremque nobis consequatur amet voluptatum dolorum nihil aliquam, in dignissimos et id consectetur, aperiam reiciendis? Numquam reprehenderit in nobis.
-
-                        </v-tab-item>
-                        <v-tab-item>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia at optio officiis ad assumenda deserunt ex excepturi ullam a repellendus unde ipsum quam nam fuga blanditiis nihil voluptatibus nemo illo, vero perspiciatis adipisci libero dignissimos dolorum et? Expedita, nemo dolorum.
-
-                        </v-tab-item>
-                    </v-tabs-items> -->
                     <TabDetails :tab_n="cards" :tab_b="tablistss" :tab_m="tabs" />
                 </v-card-text>
             </v-card>
 
         </v-col>
 
-        <v-col cols="12" sm="12" md="4" lg="4" xl="4">
-            <v-card class="pa-0 card ">
-                <v-icon color="gray" class="text-h5 d-flex justify-center pt-4">
-                    mdi-moped-outline
-                </v-icon>
-                <span class="text-body-2  d-flex justify-center">30min</span>
-                <v-card-title class="text-body-1 font-weight-bold d-flex justify-center ">Your Order from {{resturent.name }}</v-card-title>
-                <v-card-text class="pa-0 d-block c_text">
-                    <v-list class="pa-0 " v-for="foods in foods" :key="foods.id" outlined>
-                        <v-list-item class=" d-flex justify-space-between">
-                            <v-list-item-title>{{foods.name}}</v-list-item-title>
-                            <v-list-item-subtitle class="text-end">Tk. {{foods.price}}</v-list-item-subtitle>
-                        </v-list-item>
-                        <v-list-item class="d-flex justify-end">
-                            <v-icon color="red">mdi-delete</v-icon>
-                            <span class="mx-2 text-body-1 font-weight-bold">{{value}}</span>
-                            <v-icon @click="incrementValue" color="green">mdi-plus</v-icon>
-                        </v-list-item>
-
-                    </v-list>
-                </v-card-text>
-                <v-card-text class="pa-0 ">
-                    <v-list class="pa-0">
-                        <v-list-item class="d-flex justify-space-between" v-for="total in totals" :key="total.id">
-                            <v-list-item-title>{{total.name}}</v-list-item-title>
-                            <v-list-item-subtitle class="text-end">Tk. {{total.price}}</v-list-item-subtitle>
-                        </v-list-item>
-                    </v-list>
-                </v-card-text>
-            </v-card>
+        <v-col cols="12" sm="12" md="4" lg="4" xl="4" class="card">
+            <BillDetail :delivery="delivery" :foods="foods" name="Resturent" />
         </v-col>
     </v-row>
 </div>
@@ -85,6 +40,7 @@
 import {mapGetters} from 'vuex'
 import ResturentDetailDialog from '@/components/ResturentDetailDialog.vue';
 import TabDetails from '@/components/TabDetails.vue';
+import BillDetail from '@/components/BillDetail.vue';
 
 export default {
     name: 'resturent-details',
@@ -95,6 +51,7 @@ export default {
             tabs: null,
             value: 0,
             dialog: false,
+            delivery:'30min',
             tablistss: [{
                     id: 1,
                     name: 'Chicken',
@@ -118,32 +75,7 @@ export default {
             ],
 
             cards: ['Chicken', 'Snakes', 'Vegetable', 'Starters'],
-            totals: [{
-                    id: 1,
-                    name: 'Subtotal',
-                    price: 22
-                },
-                {
-                    id: 2,
-                    name: 'Delivery fee',
-                    price: 20
-                },
-                {
-                    id: 3,
-                    name: 'Platform fee',
-                    price: 3
-                },
-                {
-                    id: 4,
-                    name: 'vat',
-                    price: 5
-                },
-                {
-                    id: 5,
-                    name: 'Total',
-                    price: 50
-                }
-            ],
+            
 
             foods: [{
                     id: 1,
@@ -251,14 +183,10 @@ export default {
     components: {
         TabDetails,
         ResturentDetailDialog,
-
+        BillDetail
     },
 
-    methods: {
-        incrementValue() {
-            this.value += 1;
-        }
-    }
+    
 
 }
 </script>
@@ -267,25 +195,24 @@ export default {
 .body-card {
     height: 400px;
 }
+.resturent-details{
+    height: 100vh;
+}
 
 .v-list-item {
     min-height: 40px !important;
 }
 
 .card {
-    position: fixed;
-    width: 30%;
-    height: 100%;
+    position: relative;
+    right: 0;
+    width: 30%;  
 }
 
-.card .c_text {
-    height: 200px;
-    overflow: scroll;
-}
 
 @media only screen and (max-width: 600px) {
     .card {
-        position: static;
+        position: relative;
         width: 100%;
         height: 50%;
     }
