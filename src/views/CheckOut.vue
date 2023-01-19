@@ -1,49 +1,98 @@
 <template>
-<div class="check-out">
-    <v-container>
-        <v-card>
-            <v-card-title class="d-flex justify-center text-h6 text-uppercase">Bill details</v-card-title>
-            <v-card-text>
-                <v-list class="d-block">
-                    <v-list-item class="d-flex justify-space-between">
-                        <v-list-item-avatar>
-                            <v-img src="https://i.ndtvimg.com/i/2017-12/dry-fruits-are-good-for-heart-health_650x400_61513059621.jpg?q=50" />
-                        </v-list-item-avatar>
-                        <v-list-item-content>
-                            <v-list-item-title class="text-body-1">title</v-list-item-title>
-                            <v-list-item-subtitle class="text-body-2">quantity</v-list-item-subtitle>
-                        </v-list-item-content>
-                          <v-list-item-content>
-                            <v-list-item-title class="text-body-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dolorum!</v-list-item-title>
-                        </v-list-item-content>
-                        <v-list-title class="text-body-1">price</v-list-title>
-                        <v-list-item-icon>
-                            <v-icon color="red">mdi-delete</v-icon>
-                        </v-list-item-icon>
-                    </v-list-item>
+<v-container>
+    <v-row class="d-flex justify-center ">
+        <v-col cols="12" sm="12" md="8" lg="8" xl="8">
+            <v-card class="pa-0" elevation="1">
+                <v-card-title class="text-body-1 pa-0 font-weight-bold mx-2 my-2 d-flex justify-start">E-Commerce</v-card-title>
+                <v-divider></v-divider>
+                <v-card-text class=" d-block">
+                    <ProductCheckoutList :cart="cart" />
 
-                    <!-- second -->
+                </v-card-text>
+            </v-card>
+        </v-col>
+        <!-- second part -->
 
-                    <v-list-item class="d-flex justify-space-between">
-                        <v-list-item-avatar>
-                            <v-img src="https://i.ndtvimg.com/i/2017-12/dry-fruits-are-good-for-heart-health_650x400_61513059621.jpg?q=50" />
-                        </v-list-item-avatar>
-                        <v-list-item-content>
-                            <v-list-item-title class="text-body-1">title</v-list-item-title>
-                            <v-list-item-subtitle class="text-body-2">quantity</v-list-item-subtitle>
-                        </v-list-item-content>
-                        <v-list-title class="text-body-1">price</v-list-title>
-                        <v-list-item-icon>
-                            <v-icon color="red">mdi-delete</v-icon>
-                        </v-list-item-icon>
-                    </v-list-item>
+        <v-col cols="12" md="4" sm="12" lg="4" xl="4" class="my-5">
+            <v-card class="pa-2" elevation="1">
+                <v-card-title class="text-body-1 font-weight-bold pa-0 my-2 mx-2 d-flex justify-start">Order Summery</v-card-title>
+                <v-divider></v-divider>
+                <v-card-text class="pa-0">
+                    <v-list class="pa-0">
 
-                </v-list>
-            </v-card-text>
-            <v-card-actions class="d-flex justify-end">
-                <v-btn class="d-block">payment</v-btn>
-            </v-card-actions>
-        </v-card>
-    </v-container>
-</div>
+                        <v-list-item class="d-flex justify-space-between">
+                            <v-list-item-title class="text-body-1">Subtotal: </v-list-item-title>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1">$ 222</v-list-item-subtitle>
+                        </v-list-item>
+
+                        <v-list-item class="d-flex justify-space-between">
+                            <v-list-item-title class="text-body-1">Delivery Fee: </v-list-item-title>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1">$ 20</v-list-item-subtitle>
+                        </v-list-item>
+
+                        <v-list-item class="d-flex">
+                            <v-text-field v-model="code" placeholder="Enter your code" class="shrink text-body-1 font-weight-bold w-100 text-h6" dense hide-details outlined />
+                            <v-btn color="green lignten-1 mt-n1" large>Apply Code</v-btn>
+                        </v-list-item>
+
+                        <v-list-item class="d-flex justify-space-between">
+                            <v-list-item-title class="text-body-1">Vat: </v-list-item-title>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1"> 5%</v-list-item-subtitle>
+                        </v-list-item>
+
+                        <v-list-item class="d-flex green lighten-4 my-2">
+                            <v-list-item-title class="text-body-1 font-weight-bold text-end"> Total: $ {{totalPrice}}</v-list-item-title>
+                        </v-list-item>
+
+                    </v-list>
+                </v-card-text>
+                <v-card-actions class="pa-0 my-2 d-flex justify-center my-2">
+                    <router-link :to="{name:''}" class="text-decoration-none pa-0">
+                        <v-btn text color="green lignten-5" width="100%" class="black--text font-weight-bold text-body-2">
+                            Proceed to checkout
+                        </v-btn>
+                    </router-link>
+                </v-card-actions>
+            </v-card>
+        </v-col>
+    </v-row>
+</v-container>
 </template>
+
+<script>
+import ProductCheckoutList from '@/components/ProductCheckoutList.vue';
+import { mapGetters, mapState } from 'vuex';
+
+export default {
+
+    data() {
+        return {
+            code: ''
+        }
+    },
+    computed: {
+        ...mapState('cart',{
+            cart :'cart'
+        }),
+        ...mapGetters('cart',{
+            totalPrice:'cardTotalPrice'
+        }),
+        // cart() {
+        //     return this.$store.cart.cart;
+        // },
+        // totalPrice() {
+        //     return this.$store.cart.getters.cardTotalPrice;
+        // }
+    },
+
+    components: {
+        ProductCheckoutList,
+    },
+
+    methods: {
+      
+
+    }
+
+}
+</script>
