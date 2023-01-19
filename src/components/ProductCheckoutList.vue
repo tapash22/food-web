@@ -75,7 +75,7 @@ export default {
             // });
             this.item = item
             let value = this.item.quantity++;
-            console.log(value);
+            // console.log(value);
             this.$store.dispatch("cart/addProductToCard", {
 
                 product: this.item,
