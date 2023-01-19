@@ -5,7 +5,7 @@
             <v-list class="d-flex justify-space-between  ">
                 <v-list-item-title class="mx-5 text-h6 font-weight-bold align-center">FoodApp</v-list-item-title>
                 <v-list-item class="d-flex justify-end">
-                    <v-icon class="mx-2 text-h4" v-for="icon in icons" :key="icon">
+                    <v-icon class="mx-2 text-h3" v-for="icon in icons" :key="icon" color="green lighten-1">
                         {{icon}}
                     </v-icon>
                 </v-list-item>
@@ -14,23 +14,14 @@
     </v-row>
     <v-row class="white my-2 ">
         <v-col cols="12" sm="6" md="3" lg="3" xl="3">
-            <h2 class="text-body-1  mx-5 my-5">&copy;2023 FoodApp</h2>
+            <h2 class="text-h6 font-weight-bold  mx-5 my-5">&copy;2023 FoodApp</h2>
         </v-col>
-        <v-col cols="12" sm="6" md="3" lg="3" xl="3">
-            <p class="text-body-2 mx-2 my-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.
+        <v-col cols="12" sm="6" md="3" lg="3" xl="3" v-for="text in texts" :key="text">
+            <p class="text-body-1 mx-2 my-5 text-justify">
+                {{text}}
             </p>
         </v-col>
-        <v-col cols="12" sm="6" md="3" lg="3" xl="3">
-            <p class="text-body-2 mx-2 my-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.
-            </p>
-        </v-col>
-        <v-col cols="12" sm="6" md="3" lg="3" xl="3">
-            <p class="text-body-2 mx-2 my-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.
-            </p>
-        </v-col>
+
     </v-row>
 </v-footer>
 </template>
@@ -39,7 +30,11 @@
 export default {
     data() {
         return {
-            icons: ['mdi-facebook', 'mdi-twitter', 'mdi-linkedin']
+            icons: ['mdi-facebook', 'mdi-instagram'],
+            texts: ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.',
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.',
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.'
+            ]
         }
     }
 }

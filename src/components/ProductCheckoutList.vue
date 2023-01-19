@@ -9,6 +9,7 @@
                     <v-list-item-subtitle class="text-caption"> this is leather jacket with button</v-list-item-subtitle>
                     <v-list-item-title class="text-body-1 my-2"> {{item.product.category}}</v-list-item-title>
                 </v-list-item>
+
                 <v-list-item class="d-block w-50 second">
                     <v-list-item-title class="my-1">${{item.product.price}}</v-list-item-title>
                     <v-list-item-subtitle>20%</v-list-item-subtitle>
@@ -18,8 +19,8 @@
                 </v-list-item>
                 <v-list-item-action-text class="d-flex d-sm-flex d-md-block d-lg-block third w-75 my-2">
                     <v-icon @click="countMinus" color="green" class="text-h6 font-weight-bold">mdi-minus</v-icon>
-                    <span class="text-h6 font-wight-bold black--text mx-2 my-1">{{count}}</span>
-                    <v-icon @click="countPlus" color="green" class="text-h6 font-weight-bold">mdi-plus</v-icon>
+                    <span class="text-h6 font-wight-bold black--text mx-2 my-1">{{item.quantity}}</span>
+                    <v-icon @click="addToCart(item)" color="green" class="text-h6 font-weight-bold">mdi-plus</v-icon>
                 </v-list-item-action-text>
             </div>
 
@@ -29,30 +30,70 @@
 </template>
 
 <script>
+import {
+    mapGetters
+} from 'vuex';
 export default {
     name: 'product-checkout-list',
     props: ['cart'],
     data() {
         return {
             count: 1,
+            item: null,
         }
     },
+    computed: {
 
+        ...mapGetters('cart', {
+            cartItemCount: 'cartItemQuentity'
+        }),
+        // plus() {
+        //     return this.countPlus;
+        // },
+        // minus() {
+        //     return this.countMinus;
+        // }
+    },
     methods: {
         removeProductFromCart(product) {
             this.$store.dispatch('removeProductFromCart', product);
         },
-        
-        countMinus(){
-            if(this.count == 1){
+
+        countMinus() {
+            if (this.count == 1) {
                 this.count = 0;
-            }else{
+            } else {
                 this.count -= 1;
             }
         },
-        countPlus(){
-            this.count += 1;
-        }
+        addToCart(item) {
+            // this.item = item;
+            // let value = this.item.quantity++;
+            // this.$store.dispatch("cart/addCardQuantity", {
+            //     cart: this.item,
+            //     quantity: value
+            // });
+            this.item = item
+            let value = this.item.quantity++;
+            console.log(value);
+            this.$store.dispatch("cart/addProductToCard", {
+
+                product: this.item,
+                quantity: value
+            });
+        },
+        // plusCount(){
+        //     this.$store.dispatch("cart/addQuantity",{
+        //         product:this.cart,
+        //         quantity:1
+        //     })
+        // }
+        // countPlus() {
+        //     this.$store.dispatch('cart/addPoductQuantity',{
+        //         product:this.item,
+        //         quantity:this.count
+        //     })
+
     }
 }
 </script>

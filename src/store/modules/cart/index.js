@@ -10,6 +10,12 @@ export default {
         cartItemCount : (state)=>{
             return state.cart.length;
         },
+        // cartItemQuentity:(state)=>{
+        //     let count = 0;
+        //     state.cart.forEach(item=>{
+        //         count += item.quantity;
+        //     })
+        // },
         
         cardTotalPrice : (state)=>{
             let total = 0;
@@ -36,6 +42,22 @@ export default {
                 quantity
             })
         },
+
+        ADD_CART_QUANTITY:(state,{cart,quantity})=>{
+            let pquantity = state.cart.find(item =>{
+                return item.cart.id === cart.id;
+            });
+            if(pquantity){
+                pquantity.quantity += quantity;
+                return;
+            }
+
+            state.cart.push({
+                cart,
+                quantity
+            });
+        },
+        
         
         
         SET_CART: (state,cartItem)=>{
@@ -67,6 +89,15 @@ export default {
             //     product_id: product.id,
             //     quantity,
             // })
+        },
+        addQuantity:({commit},{product,quantity})=>{
+            commit('ADD_QUANTITY',{
+                product,quantity
+            });
+        },
+
+        addCardQuantity:({commit},{cart,quantity}) =>{
+            commit('ADD_CART_QUANTITY',{cart,quantity})
         },
 
         getCartItem: ({ commit }) => {

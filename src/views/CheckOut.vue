@@ -22,33 +22,33 @@
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title class="text-body-1">Subtotal: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-body-1">$ 222</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end text-h6 font-weight-bold">$ {{totalPrice}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title class="text-body-1">Delivery Fee: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-body-1">$ 20</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end text-h6 font-weight-bold">$ {{delivery}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex">
                             <v-text-field v-model="code" placeholder="Enter your code" class="shrink text-body-1 font-weight-bold w-100 text-h6" dense hide-details outlined />
-                            <v-btn color="green lignten-1 mt-n1" large>Apply Code</v-btn>
+                            <v-btn color="green lignten-1 mt-n1 text-h6" large>Apply Code</v-btn>
                         </v-list-item>
 
                         <v-list-item class="d-flex justify-space-between">
-                            <v-list-item-title class="text-body-1">Vat: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-body-1"> 5%</v-list-item-subtitle>
+                            <v-list-item-title class="text-body-1 text-body-1 ">Vat:(5%) </v-list-item-title>
+                            <v-list-item-subtitle class="d-flex justify-end text-h6 font-weight-bold"> ${{vat}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex green lighten-4 my-2">
-                            <v-list-item-title class="text-body-1 font-weight-bold text-end"> Total: $ {{totalPrice}}</v-list-item-title>
+                            <v-list-item-title class="text-h6 font-weight-bold text-end"> Total: $ {{totalSum}}</v-list-item-title>
                         </v-list-item>
 
                     </v-list>
                 </v-card-text>
                 <v-card-actions class="pa-0 my-2 d-flex justify-center my-2">
                     <router-link :to="{name:''}" class="text-decoration-none pa-0">
-                        <v-btn text color="green lignten-5" width="100%" class="black--text font-weight-bold text-body-2">
+                        <v-btn text color="green lignten-5" width="100%" class="black--text font-weight-bold text-body-1">
                             Proceed to checkout
                         </v-btn>
                     </router-link>
@@ -61,28 +61,41 @@
 
 <script>
 import ProductCheckoutList from '@/components/ProductCheckoutList.vue';
-import { mapGetters, mapState } from 'vuex';
+import {
+    mapGetters,
+    mapState
+} from 'vuex';
 
 export default {
 
     data() {
         return {
-            code: ''
+            code: '',
+            delivery: 10,
         }
     },
     computed: {
-        ...mapState('cart',{
-            cart :'cart'
+        ...mapState('cart', {
+            cart: 'cart'
         }),
-        ...mapGetters('cart',{
-            totalPrice:'cardTotalPrice'
+        ...mapGetters('cart', {
+            totalPrice: 'cardTotalPrice'
         }),
-        // cart() {
-        //     return this.$store.cart.cart;
-        // },
-        // totalPrice() {
-        //     return this.$store.cart.getters.cardTotalPrice;
-        // }
+
+        vat() {
+            return this.totalPrice * (5 / 100);
+        },
+
+        voucher(){
+            return this.getVoucher();
+        },
+
+        totalSum() {
+
+            let total = this.totalPrice;
+            let delivery = this.delivery;
+            return total + delivery + (-this.voucher) + this.vat;
+        }
     },
 
     components: {
@@ -90,8 +103,16 @@ export default {
     },
 
     methods: {
-      
 
+        getVoucher() {
+            let voucher=0;
+            if (this.code == "my") {
+               return voucher = (10 / 100) * this.totalPrice;
+            } else {
+              return  voucher = 0
+            }
+           
+        }
     }
 
 }
