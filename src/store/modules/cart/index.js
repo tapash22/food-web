@@ -42,23 +42,22 @@ export default {
                 quantity
             })
         },
+        ADD_QUANTITY : (state,{ product, quantity })=>{
 
-        ADD_CART_QUANTITY:(state,{cart,quantity})=>{
-            let pquantity = state.cart.find(item =>{
-                return item.cart.id === cart.id;
+            let productInCard = state.cart.find(item=>{
+                return item.id === product.id;
             });
-            if(pquantity){
-                pquantity.quantity += quantity;
+        
+            if(productInCard){
+                productInCard.quantity ++;
                 return;
             }
-
+        
             state.cart.push({
-                cart,
+                product,
                 quantity
-            });
+            })
         },
-        
-        
         
         SET_CART: (state,cartItem)=>{
             state.cart = cartItem;
@@ -90,14 +89,8 @@ export default {
             //     quantity,
             // })
         },
-        addQuantity:({commit},{product,quantity})=>{
-            commit('ADD_QUANTITY',{
-                product,quantity
-            });
-        },
-
-        addCardQuantity:({commit},{cart,quantity}) =>{
-            commit('ADD_CART_QUANTITY',{cart,quantity})
+        addQuantity: ({ commit}, { product, quantity }) => {
+            commit('ADD_QUANTITY', { product, quantity });
         },
 
         getCartItem: ({ commit }) => {

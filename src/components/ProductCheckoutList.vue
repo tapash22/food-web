@@ -20,7 +20,7 @@
                 <v-list-item-action-text class="d-flex d-sm-flex d-md-block d-lg-block third w-75 my-2">
                     <v-icon @click="countMinus" color="green" class="text-h6 font-weight-bold">mdi-minus</v-icon>
                     <span class="text-h6 font-wight-bold black--text mx-2 my-1">{{item.quantity}}</span>
-                    <v-icon @click="addToCart(item)" color="green" class="text-h6 font-weight-bold">mdi-plus</v-icon>
+                    <v-icon @click="addQuantity(item)" color="green" class="text-h6 font-weight-bold">mdi-plus</v-icon>
                 </v-list-item-action-text>
             </div>
 
@@ -66,33 +66,15 @@ export default {
                 this.count -= 1;
             }
         },
-        addToCart(item) {
-            // this.item = item;
-            // let value = this.item.quantity++;
-            // this.$store.dispatch("cart/addCardQuantity", {
-            //     cart: this.item,
-            //     quantity: value
-            // });
+        addQuantity(item) {
             this.item = item
             let value = this.item.quantity++;
-            // console.log(value);
-            this.$store.dispatch("cart/addProductToCard", {
+            this.$store.dispatch("cart/addQuantity", {
 
-                product: this.item,
+               //  product: item,
                 quantity: value
             });
         },
-        // plusCount(){
-        //     this.$store.dispatch("cart/addQuantity",{
-        //         product:this.cart,
-        //         quantity:1
-        //     })
-        // }
-        // countPlus() {
-        //     this.$store.dispatch('cart/addPoductQuantity',{
-        //         product:this.item,
-        //         quantity:this.count
-        //     })
 
     }
 }
