@@ -12,9 +12,9 @@
                 <v-list-item-subtitle class="text-end">Tk. {{foods.price}}</v-list-item-subtitle>
             </v-list-item>
             <v-list-item class="d-flex justify-end">
-                <v-icon color="red">mdi-delete</v-icon>
-                <span class="mx-2 text-body-1 font-weight-bold">{{value}}</span>
-                <v-icon @click="incrementValue" color="green">mdi-plus</v-icon>
+                <v-icon @click="countMinus" color="red" class="text-h6">mdi-minus</v-icon>
+                <span class="mx-2 text-body-1 black--text">{{count}}</span>
+                <v-icon @click="countPlus" color="red" class="text-h6">mdi-plus</v-icon>
             </v-list-item>
 
         </v-list>
@@ -36,7 +36,7 @@ export default {
     props: ['foods', 'name', 'delivery'],
     data() {
         return {
-            value: 0,
+
             totals: [{
                     id: 1,
                     name: 'Subtotal',
@@ -63,13 +63,21 @@ export default {
                     price: 50
                 }
             ],
+            count: 1,
         }
     },
 
     methods: {
-        incrementValue() {
-            this.value += 1;
-        }
+        countPlus() {
+            this.count += 1;
+        },
+        countMinus() {
+            if (this.count == 1) {
+                this.count= 0;
+            }else{
+                this.count -= 1;
+            }
+        },
     }
 }
 </script>

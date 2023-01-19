@@ -4,19 +4,25 @@
         <v-col cols="12" sm="12" md="8" lg="8" xl="8">
             <div class="card">
                 <div class="image">
-                    <v-img :src="item.image" />
+                    <v-img class="img" :src="item.image" />
                 </div>
                 <div class="details">
                     <v-list color="pa-4" elevation="2">
                         <v-list-item-title class="text-body-1 font-weight-bold ">{{item.name}}</v-list-item-title>
-                        <v-rating dense size="14" value="4" color="green" />
-                        <v-list-item class="list-item ">
-                            <v-chip active-class="red" color="gray" class="text-body-2 font-weight-medium d-flex justify-center my-1" pill v-for="item in ingridients" :key="item">{{item}}</v-chip>
+                        <v-rating dense size="14" :value="value" color="green" />
+                        <v-list-item-title class="text-body-1 my-5 mx-5">Add </v-list-item-title>
+                        <v-list-item class="my-5">
+                            <v-chip-group multiple column active-class="green lignten-1 white--text">
+                                <v-chip v-for="tag in ingridients" :key="tag" @click="activeChip(tag)">
+                                    {{ tag }}
+                                </v-chip>
+                            </v-chip-group>
+                            <!-- <v-chip active-class="red" color="gray" class="text-body-2 font-weight-medium d-flex justify-center my-1" pill v-for="item in ingridients" :key="item">{{item}}</v-chip> -->
                         </v-list-item>
                         <v-list-item class="d-block">
-                            <v-list-item-title class="text-body-2 font-weight-bold ">Tk.{{item.price}}</v-list-item-title>
-                            <v-sheet class="pa-1 my-2 " elevation="0">
-                                <v-icon color="red" class="text-h6" @click="countMinus">mdi-delete</v-icon>
+                            <v-list-item-title class="text-body-2 font-weight-bold my-2 ">Tk.{{item.price}}</v-list-item-title>
+                            <v-sheet class="pa-1 my-4 " elevation="0">
+                                <v-icon color="red" class="text-h6" @click="countMinus">mdi-minus</v-icon>
                                 <span class="mx-2 text-body-1">{{count}}</span>
                                 <v-icon color="red" class="text-h6" @click="countPlus">mdi-plus</v-icon>
                             </v-sheet>
@@ -27,7 +33,7 @@
                         </v-list-item>
 
                         <v-list-item-action class="d-flex justif-start">
-                            <v-btn color="green" small @click="addToCart" >Add To Card</v-btn>
+                            <v-btn color="green" small @click="addToCart">Add To Card</v-btn>
                         </v-list-item-action>
                     </v-list>
                 </div>
@@ -54,8 +60,10 @@ export default {
     name: 'fooddetails',
     data() {
         return {
+            value: 4,
+
             id: this.$route.params.id,
-count:0,
+            count: 1,
             delivery: '30min',
             foodss: [{
                     id: 1,
@@ -98,9 +106,8 @@ count:0,
                     details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
                 },
 
-                
             ],
-            ingridients:['poteto','capsicum','garlic','onion','vineger','cheese']
+            ingridients: ['poteto', 'capsicum', 'garlic', 'onion', 'vineger', 'cheese', 'latus', ]
         }
     },
 
@@ -120,18 +127,26 @@ count:0,
 
     methods: {
         addToCart() {
+            let value = this.count;
             this.$store.dispatch("cart/addProductToCard", {
+
                 product: this.item,
-                quantity: 1
+                quantity: value
             });
         },
-        countPlus(){
+        countPlus() {
             this.count += 1;
         },
-        countMinus(){
-            if(this.count == 0){
+         countMinus() {
+            if (this.count == 1) {
+                this.count= 0;
+            }else{
                 this.count -= 1;
             }
+        },
+
+        activeChip(data) {
+            console.log(data);
         }
 
     }
@@ -140,26 +155,48 @@ count:0,
 </script>
 
 <style scoped>
-.card{
+.card {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 5px;
 }
-.card .image{
+
+.card .image {
     width: 100%;
-    height: 300px;
+    height: 250px;
+
+}
+
+.card .image .img {
+
+    height: 100%;
     background-position: center;
     background-size: cover;
 }
-.card .details{
-    display:block;
+
+.card .details {
+    display: block;
     width: 100%;
     height: 100%;
 }
-.list-item{
-    display: grid;
-    grid-template-columns: repeat(3, 80px);
-    grid-gap: 5px;
-    height: 100px;
+
+@media only screen and (max-width: 600px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card .image {
+        width: 100%;
+        height: 250px;
+    }
+
+    .card .image .img {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+
 }
 </style>

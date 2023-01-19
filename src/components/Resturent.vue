@@ -12,7 +12,7 @@
                 <v-card-title class="pa-0 text-body-1 mx-2 black--text font-weight-bold my-2">
                     {{ resturent.name}}
                 </v-card-title> 
-                <v-rating size="14" color="green" class="mx-2 pa-0" dense value="4" />
+                <v-rating size="14" color="green" class="mx-2 pa-0" dense :value="value" />
                 <v-card-subtitle class="text-body-2   green--text">TK 30 Delivery Fee</v-card-subtitle>
             </v-card-text>
         </v-card>
@@ -23,7 +23,12 @@
 <script>
 export default {
     name: 'resturent',
-    props: ['resturent']
+    props: ['resturent'],
+    data(){
+        return{
+            value:4
+        }
+    }
 }
 </script>
 
