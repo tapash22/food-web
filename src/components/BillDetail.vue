@@ -1,10 +1,10 @@
 <template>
 <v-card class="pa-0 card2">
-    <v-icon color="gray" class="text-h5 d-flex justify-center pt-4">
+    <v-icon color="green" class="text-h3 icon bounceInLeft font-weight-bold d-flex justify-center pt-4">
         mdi-moped-outline
     </v-icon>
-    <span class="text-body-2  d-flex justify-center">{{delivery}}</span>
-    <v-card-title class="text-body-1 font-weight-bold d-flex justify-center ">Your Order from {{name}}</v-card-title>
+    <span class="text-body-1 font-weight-bold  d-flex justify-center">{{delivery}}</span>
+    <v-card-title class="text-h6 font-weight-bold d-flex justify-center ">Your Order from {{name}}</v-card-title>
     <v-card-text class="pa-0 d-block c_text">
         <v-list class="pa-0 " v-for="foods in foods" :key="foods.id" outlined>
             <v-list-item class=" d-flex justify-space-between">
@@ -73,8 +73,8 @@ export default {
         },
         countMinus() {
             if (this.count == 1) {
-                this.count= 0;
-            }else{
+                this.count = 0;
+            } else {
                 this.count -= 1;
             }
         },
@@ -83,15 +83,47 @@ export default {
 </script>
 
 <style scoped>
+.icon {
+     animation-duration: 3s; 
+}
+
+.bounceInLeft {
+    animation-name: bounceInLeft;
+}
+
 .card2 {
     position: relative;
-    height: 600px;
+    height: 700px;
     margin: 10px;
 }
 
 .card2 .c_text {
-    height: 200px;
+    height: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+
+
+@keyframes bounceInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateX(30px);
+    }
+
+    80% {
+        opacity: 0.8;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        transform: translateX(0);
+        color: rgb(51, 206, 51);
+    }
 }
 </style>
