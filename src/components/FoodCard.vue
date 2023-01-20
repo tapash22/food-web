@@ -2,7 +2,7 @@
 <div class="food-card">
     <router-link :to="{ name:'fooddetails' ,params:{id:item.id}}" class="text-decoration-none">
         <v-card class="pa-2 mx-1">
-            <v-img class="background-size-cover v-responsive_content" :src="item.image">
+            <v-img height="350" class="background-size-cover " :src="item.image">
             </v-img>
             <v-card-text class=" d-block pa-0 ma-0">
                 <v-card-title class="black--text text-body-1 font-weight-bold">{{ name}}</v-card-title>

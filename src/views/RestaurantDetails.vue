@@ -37,7 +37,9 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {
+    mapGetters
+} from 'vuex'
 import ResturentDetailDialog from '@/components/ResturentDetailDialog.vue';
 import TabDetails from '@/components/TabDetails.vue';
 import BillDetail from '@/components/BillDetail.vue';
@@ -51,31 +53,226 @@ export default {
             tabs: null,
             value: 0,
             dialog: false,
-            delivery:'30min',
+            delivery: '30min',
             tablistss: [{
                     id: 1,
                     name: 'Chicken',
-                    text: 'no Chicken  yet'
+                    text: 'Chicken',
+                    r_foods: [{
+                            id: 1,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 2,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 3,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 4,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 5,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 6,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                    ],
                 },
                 {
                     id: 2,
                     name: 'Snakes',
-                    text: 'no Snakes yet'
+                    text: 'Snakes',
+                    r_foods: [{
+                            id: 1,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 2,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 3,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 4,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 5,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 6,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                    ],
                 },
                 {
                     id: 3,
                     name: 'Vegetable',
-                    text: 'no Vegetable  yet'
+                    text: 'Vegetable',
+                    r_foods: [{
+                            id: 1,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 2,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 3,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 4,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 5,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 6,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                    ],
                 },
                 {
                     id: 4,
                     name: 'Starters',
-                    text: 'no Starters yet'
+                    text: 'Starters',
+                    r_foods: [{
+                            id: 1,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 2,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 3,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 4,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 5,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                        {
+                            id: 6,
+                            name: 'Fried Rice',
+                            image: 'https://assets.tendercuts.in/product/M/R/5487a287-ec1b-47a0-85bf-8e0f97e77349.webp',
+                            price: 34,
+                            rating: 3.5,
+                            details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
+                        },
+                    ],
                 },
             ],
 
             cards: ['Chicken', 'Snakes', 'Vegetable', 'Starters'],
-            
 
             foods: [{
                     id: 1,
@@ -119,56 +316,6 @@ export default {
                 },
             ],
 
-            r_foods: [{
-                    id: 1,
-                    name: 'Fried Rice',
-                    image: '',
-                    price: 34,
-                    rating: 3.5,
-                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
-                },
-                {
-                    id: 2,
-                    name: 'Fried Rice',
-                    image: '',
-                    price: 34,
-                    rating: 3.5,
-                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
-                },
-                {
-                    id: 3,
-                    name: 'Fried Rice',
-                    image: '',
-                    price: 34,
-                    rating: 3.5,
-                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
-                },
-                {
-                    id: 4,
-                    name: 'Fried Rice',
-                    image: '',
-                    price: 34,
-                    rating: 3.5,
-                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
-                },
-                {
-                    id: 5,
-                    name: 'Fried Rice',
-                    image: '',
-                    price: 34,
-                    rating: 3.5,
-                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
-                },
-                {
-                    id: 6,
-                    name: 'Fried Rice',
-                    image: '',
-                    price: 34,
-                    rating: 3.5,
-                    details: ['ingredient', 'ingredient', 'ingredient', 'ingredient', ]
-                },
-            ],
-
         }
     },
     computed: {
@@ -186,8 +333,6 @@ export default {
         BillDetail
     },
 
-    
-
 }
 </script>
 
@@ -195,7 +340,8 @@ export default {
 .body-card {
     height: 400px;
 }
-.resturent-details{
+
+.resturent-details {
     height: 100vh;
 }
 
@@ -206,9 +352,8 @@ export default {
 .card {
     position: relative;
     right: 0;
-    width: 30%;  
+    width: 30%;
 }
-
 
 @media only screen and (max-width: 600px) {
     .card {

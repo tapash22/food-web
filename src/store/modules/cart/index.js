@@ -58,6 +58,22 @@ export default {
                 quantity
             })
         },
+
+        MINUS_QUANTITY:(state,{product, quantity})=>{
+            let productInCard = state.cart.find(item=>{
+                return item.id === product.id;
+            });
+        
+            if(productInCard){
+                productInCard.quantity --;
+                return;
+            }
+        
+            state.cart.push({
+                product,
+                quantity
+            })
+        },
         
         SET_CART: (state,cartItem)=>{
             state.cart = cartItem;
@@ -91,6 +107,10 @@ export default {
         },
         addQuantity: ({ commit}, { product, quantity }) => {
             commit('ADD_QUANTITY', { product, quantity });
+        },
+
+        removeQuantity:({commit},{product,quantity}) =>{
+            commit('MINUS_QUANTITY',{product,quantity});
         },
 
         getCartItem: ({ commit }) => {
