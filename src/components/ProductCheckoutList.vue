@@ -125,7 +125,8 @@ export default {
 
     .text .text1 {
         display: grid;
-        grid-auto-columns: 2fr;
+        grid-template-columns: 1fr;
+
     }
 }
 </style>
