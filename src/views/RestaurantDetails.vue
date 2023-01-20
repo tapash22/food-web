@@ -1,8 +1,8 @@
 <template>
-<div class="resturent-details">
+<div class="resturent-details" >
     <v-row class="d-flex justify-space-between">
-        <v-col cols="12" sm="12" md="8" lg="8" xl="8" class="pa-0">
-            <v-card class="pa-0">
+        <v-col cols="12" sm="12" md="8" lg="8" xl="8" class="pa-0 my-2">
+            <v-card class="pa-0 ">
                 <v-img height="200" class="my-2" :src="resturent.image" />
 
                 <v-card-title class="d-flex justify-space-between">
@@ -17,8 +17,8 @@
                     </v-dialog>
                 </v-card-title>
 
-                <v-card-subtitle>
-                    <v-icon color="green" class="text-h6 mx-2"> mdi-map-marker-outline</v-icon><span class="text-body-2">House:40, Road:01, Block:#E, Bonosree, Rampura, Dhaka</span>
+                <v-card-subtitle class="d-flex">
+                    <v-icon color="green" class="text-h6 mx-2"> mdi-map-marker-outline</v-icon><span class="text-body-2 text-center">House:40, Road:01, Block:#E, Bonosree, Rampura, Dhaka</span>
                 </v-card-subtitle>
 
                 <v-card-text>
@@ -337,12 +337,13 @@ export default {
 </script>
 
 <style scoped>
+
 .body-card {
     height: 400px;
 }
 
 .resturent-details {
-    height: 100vh;
+    height: 100%;
 }
 
 .v-list-item {

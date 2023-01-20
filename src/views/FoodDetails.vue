@@ -156,27 +156,22 @@ export default {
 
 <style scoped>
 .card {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 5px;
+   display: flex;
+   justify-content: space-between;
 }
-
 .card .image {
-    width: 100%;
+    width: 30%;
     height: 250px;
-
 }
 
 .card .image .img {
-
     height: 100%;
     background-position: center;
     background-size: cover;
 }
 
 .card .details {
-    display: block;
-    width: 100%;
+    width: 65%;
     height: 100%;
 }
 
@@ -197,6 +192,10 @@ export default {
         background-position: center;
         background-size: cover;
     }
+    .card .details {
+    width: 100%;
+    height: 100%;
+}
 
 }
 </style>

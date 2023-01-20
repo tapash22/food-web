@@ -19,7 +19,6 @@
                     <a @click.prevent="removeProductFromCart(item.product)">
                         <v-icon color="red lighten-1">mdi-delete</v-icon>
                     </a>
-
                 </v-list-item-action>
               
             </v-list-item>
@@ -57,9 +56,9 @@ export default {
         })
     },
 
-    mounted() {
-        this.$store.dispatch('getCartItem');
-    },
+    // mounted() {
+    //     this.$store.dispatch('getCartItem');
+    // },
 
     methods: {
         removeProductFromCart(product) {
