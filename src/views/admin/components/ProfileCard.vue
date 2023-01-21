@@ -8,7 +8,6 @@
                         <v-list-item-title class="text-body-1 text-center">{{list.name}}</v-list-item-title>
                     </v-list-item>
                     <v-divider></v-divider>
-                 
                 </v-list>
             </v-card-text>
         </v-card>

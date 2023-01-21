@@ -2,6 +2,7 @@
 <div class="admin-view">
     <AdminNavigation />
     <v-main>
+        <router-view />
     </v-main>
 </div>
 </template>
