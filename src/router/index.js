@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ClientView from '../views/ClientView.vue'
+import ClientView from '../views/ClientView.vue';
+import AdminView from '../views/admin/AdminView.vue'
 
 Vue.use(VueRouter)
 
@@ -64,10 +65,10 @@ const routes = [
     ]
   },
 
-  // {
-  //   path:'/admin',
-  //   component: AdminView,
-  // }
+  {
+    path:'/admin',
+    component: AdminView,
+  }
 
 
 ]
