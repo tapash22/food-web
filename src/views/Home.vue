@@ -62,7 +62,6 @@
 
 <script>
 import TypeHeader from '@/components/TypeHeader.vue';
-import FormInput from '../components/FormInput.vue';
 import Resturent from '@/components/Resturent.vue';
 import FoodCard from '@/components/FoodCard.vue';
 import {
@@ -94,7 +93,6 @@ export default {
     },
 
     components: {
-        FormInput,
         Resturent,
         FoodCard,
         TypeHeader

@@ -31,9 +31,9 @@ export default {
     data() {
         return {
             icons: ['mdi-facebook', 'mdi-instagram'],
-            texts: ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.',
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.',
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.'
+            texts: ['1Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.',
+                '2Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.',
+                '3Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas tempore quae quasi consectetur necessitatibus reiciendis doloribus iure nihil aperiam sunt.'
             ]
         }
     }
