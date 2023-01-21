@@ -52,11 +52,11 @@ const routes = [
         name: 'resturentfooddetails',
         component: () => import(/* webpackChunkName: "resturentfooddetails" */ '../views/ResturentFoodDetails.vue')
       },
-      {
-        path: '/login',
-        name: 'login',
-        component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
-      },
+      // {
+      //   path: '/login',
+      //   name: 'login',
+      //   component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+      // },
       {
         path: '/checkout',
         name: 'checkout',
@@ -67,7 +67,21 @@ const routes = [
 
   {
     path:'/admin',
+    name:'admin-view',
+    redirect:'/admin/dashboard',
     component: AdminView,
+    children:[
+      {
+        path:'dashboard',
+        name:'dashboard',
+        component: () => import(/* webpackChunkName: "dashboard" */ '../views/admin/pages/DashBoard.vue')
+      },
+      {
+        path:'/admin/inbox',
+        name:'inbox',
+        component: () => import(/* webpackChunkName: "inbox" */ '../views/admin/pages/InboxView.vue')
+      }
+    ]
   }
 
 

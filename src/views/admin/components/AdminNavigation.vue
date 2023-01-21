@@ -1,6 +1,7 @@
 <template>
 <nav>
     <v-app-bar app>
+        <v-app-bar-nav-icon @click="drawer = !drawer" class="green--text" />
         <v-app-bar-title class="text-body-1 font-weight-bold">FoodApp</v-app-bar-title>
         <v-spacer></v-spacer>
         <v-badge content="1" value="1" color="green" overlap class="mx-3">
@@ -8,7 +9,7 @@
                 mdi-bell
             </v-icon>
         </v-badge>
-        <v-menu offset-y bottom left rounded class="pa-0">
+        <v-menu offset-y bottom left rounded class="pa-0 mt-13">
             <template v-slot:activator="{ on, attrs }">
                 <v-avatar size="36" class="mx-2 green">
                     <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" v-bind="attrs" v-on="on" />
@@ -23,8 +24,8 @@
 
     </v-app-bar>
 
-    <v-navigation-drawer app permanent>
-        <v-app-bar-title class="d-flex justify-center text-body-1 font-weight-bold mt-16 my-2">
+    <v-navigation-drawer v-model="drawer" app temporary>
+        <v-app-bar-title class="d-flex justify-center text-body-1 font-weight-bold mt-5 my-2">
             Admin
         </v-app-bar-title>
         <div class="image">
@@ -36,7 +37,7 @@
         <v-list dense expand nav class="pa-0">
 
             <template v-for="item in lists">
-                <v-list-item v-if="!item.children" color="indigo" :key="item.name" :to="item.path" active-class="info">
+                <v-list-item v-if="!item.children" :key="item.name" :to="item.path" active-class="red lignten-1">
                     <v-list-item-icon>
                         <v-icon class="green--text">{{ item.icon }}</v-icon>
                     </v-list-item-icon>
@@ -79,23 +80,24 @@ export default {
 
     data() {
         return {
+            drawer: false,
             lists: [{
                     id: 1,
                     name: 'DashBoard',
-                    path: '',
+                    path: '/admin/dashboard',
                     icon: 'mdi-view-dashboard',
                 },
                 {
                     id: 2,
                     name: 'Email',
                     path: '',
-                    icon: 'mdi-email',
+                    icon: 'mdi-email-fast',
                     children: [
 
                         {
                             id: 1,
                             name: 'Inbox',
-                            path: '',
+                            path: '/admin/inbox',
                             icon: 'mdi-inbox-full',
 
                         },
@@ -111,22 +113,14 @@ export default {
                             path: '',
                             icon: 'mdi-inbox-full',
                         },
-                        {
-                            id: 4,
-                            name: 'Starred',
-                            path: '',
-                            icon: 'mdi-inbox-full',
-                        },
                     ]
                 },
                 {
                     id: 3,
                     name: 'Page',
                     path: '',
-                    icon: 'mdi-email',
-                    children: [
-
-                        {
+                    icon: 'mdi-file-find',
+                    children: [{
                             id: 1,
                             name: 'page1',
                             path: '',
@@ -155,9 +149,9 @@ export default {
                 },
                 {
                     id: 4,
-                    name: 'form',
+                    name: 'Form',
                     path: '',
-                    icon: 'mdi-email',
+                    icon: 'mdi-form-select',
                     children: [
 
                         {
@@ -189,9 +183,9 @@ export default {
                 },
                 {
                     id: 5,
-                    name: 'intro',
+                    name: 'Intro',
                     path: '',
-                    icon: 'mdi-email',
+                    icon: 'mdi-bio',
                     children: [
 
                         {
