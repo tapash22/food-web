@@ -10,12 +10,6 @@ export default {
         cartItemCount : (state)=>{
             return state.cart.length;
         },
-        // cartItemQuentity:(state)=>{
-        //     let count = 0;
-        //     state.cart.forEach(item=>{
-        //         count += item.quantity;
-        //     })
-        // },
         
         cardTotalPrice : (state)=>{
             let total = 0;
@@ -59,7 +53,7 @@ export default {
             })
         },
 
-        MINUS_QUANTITY:(state,{product, quantity})=>{
+        MINUS_QUANTITY:(state,{product, quantity},commit)=>{
             let productInCard = state.cart.find(item=>{
                 return item.id === product.id;
             });
@@ -121,24 +115,10 @@ export default {
 
         removeProductFromCart: ({ commit, dispatch }, product) => {
             commit('REMOVE_PRODUCT_FROM_CART', product);
-
-            // dispatch('addNotification', {
-            //     type: 'success',
-            //     message: 'remove product from cart'
-            // }, { root: true })
-
-            // Cart.delete(product.id);
         },
 
         clearCardItem: ({ commit, dispatch }) => {
             commit('CLEAR_CART_ITEM');
-
-            // dispatch('addNotification', {
-            //     type: 'success',
-            //     message: 'remove all from  cart'
-            // }, { root: true })
-
-            // Cart.deleteAll();
         }
     }
 }

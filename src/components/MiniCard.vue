@@ -23,30 +23,29 @@
               
             </v-list-item>
             <v-divider></v-divider>
-            <v-list-item class="d-flex justify-center pa-0 ">
-                <v-list-item-title class="text-body-1 pa-0 font-weight-bold mx-1">Total: ${{ cardTotalPrice }}</v-list-item-title>
+            <v-list-item class="d-flex justify-center pa-0 " >
+                <v-list-item-title class="text-body-1 pa-0 mx-1" >Total: Tk.{{ cardTotalPrice }}</v-list-item-title>
             </v-list-item>
             <v-divider></v-divider>
         </v-list>
     </v-card-text>
 
     <v-card-actions class="pa-0 my-2 d-flex justify-center">
-        <router-link :to="{name:'checkout'}" class="text-decoration-none pa-0 w-100 ">
-            <v-btn width="100%" class="black--text text-body-1" text>
-                Checkout
-            </v-btn>
-        </router-link>
+        <CheckOutLink />
     </v-card-actions>
 </v-card>
 </template>
 
 <script>
+import CheckOutLink from '@/components/CheckOutLink.vue';
+
 import {
     mapGetters,
     mapState
 } from 'vuex'
 export default {
     name: 'mini-cart',
+
     computed: {
         ...mapState('cart', {
             cart: 'cart'
@@ -54,12 +53,12 @@ export default {
 
         ...mapGetters('cart', {
             cardTotalPrice: 'cardTotalPrice'
-        })
+        }),
     },
 
-    // mounted() {
-    //     this.$store.dispatch('getCartItem');
-    // },
+    components:{
+        CheckOutLink,
+    },
 
     methods: {
         removeProductFromCart(product) {

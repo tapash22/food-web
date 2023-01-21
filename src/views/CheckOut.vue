@@ -7,7 +7,6 @@
                 <v-divider></v-divider>
                 <v-card-text class=" d-block">
                     <ProductCheckoutList :cart="cart" />
-
                 </v-card-text>
             </v-card>
         </v-col>
@@ -22,12 +21,12 @@
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title class="text-body-1">Subtotal: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold">$ {{totalPrice}}</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold">Tk. {{totalPrice}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title class="text-body-1">Delivery Fee: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold">$ {{delivery}}</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold">Tk. {{delivery}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex">
@@ -37,7 +36,7 @@
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title class="text-body-1 text-body-1 ">Vat:(5%) </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold"> ${{vat}}</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold"> Tk. {{newVat}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex green lighten-4 my-2">
@@ -83,7 +82,10 @@ export default {
         }),
 
         vat() {
-            return this.totalPrice * (5 / 100);
+            return this.totalPrice * (5 / 100).toFixed(2);
+        },
+        newVat(){
+            return this.vat.toFixed(2);
         },
 
         voucher() {

@@ -10,12 +10,10 @@
 
         <v-menu offset-y bottom left rounded class="pa-0">
             <template v-slot:activator="{ on, attrs }">
-                <v-badge :content="cartItemCount" class="red--text" offset-x="20" offset-y="20" color="transparent" right overlap>
-                    <v-btn color="red text-body-1" icon dark v-bind="attrs" v-on="on">
-                        <v-icon large color="red" class="mt-2">
+                <v-badge :content="cartItemCount" :value="cartItemCount" offset-x="10" offset-y="20" color="green lighten-1"  overlap>
+                        <v-icon large color="red" class="mt-2" v-bind="attrs" v-on="on">
                             mdi-food-takeout-box
                         </v-icon>
-                    </v-btn>
                 </v-badge>
             </template>
 
@@ -230,3 +228,10 @@ export default {
     },
 }
 </script>
+
+
+<style scoped>
+.v-badge__badge {
+    color:red;
+}
+</style>

@@ -11,9 +11,9 @@
                 </v-list-item>
 
                 <v-list-item class="d-block w-50 second">
-                    <v-list-item-title class="my-1">${{item.product.price}}</v-list-item-title>
+                    <v-list-item-title class="my-1">Tk.{{item.product.price}}</v-list-item-title>
                     <v-list-item-subtitle>20%</v-list-item-subtitle>
-                    <v-btn color="green lighten-1" @click.prevent="removeProductFromCart(item.product)" icon>
+                    <v-btn color="green lighten-1" @click="removeProductFromCart(item.product)" icon>
                         <v-icon color="green">mdi-delete</v-icon>
                     </v-btn>
                 </v-list-item>
@@ -47,16 +47,11 @@ export default {
         ...mapGetters('cart', {
             cartItemCount: 'cartItemQuentity'
         }),
-        // plus() {
-        //     return this.countPlus;
-        // },
-        // minus() {
-        //     return this.countMinus;
-        // }
+      
     },
     methods: {
         removeProductFromCart(product) {
-            this.$store.dispatch('removeProductFromCart', product);
+            this.$store.dispatch('cart/removeProductFromCart', product);
         },
 
         removeQuantity(item) {
