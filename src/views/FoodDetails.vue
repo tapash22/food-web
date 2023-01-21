@@ -125,6 +125,10 @@ export default {
         BillDetail,
     },
 
+    mounted(){
+        window.scrollTo(0,0);
+    },
+
     methods: {
         addToCart() {
             let value = this.count;

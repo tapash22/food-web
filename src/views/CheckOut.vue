@@ -22,26 +22,26 @@
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title class="text-body-1">Subtotal: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-h6 font-weight-bold">$ {{totalPrice}}</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold">$ {{totalPrice}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title class="text-body-1">Delivery Fee: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-h6 font-weight-bold">$ {{delivery}}</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold">$ {{delivery}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex">
                             <v-text-field v-model="code" placeholder="Enter your code" class="shrink text-body-1 font-weight-bold w-100 text-h6" dense hide-details outlined />
-                            <v-btn color="green lignten-1 mt-n1 text-h6" large>Apply Code</v-btn>
+                            <v-btn color="green lignten-1 mt-n1 text-body-1" large>Apply Code</v-btn>
                         </v-list-item>
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title class="text-body-1 text-body-1 ">Vat:(5%) </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-h6 font-weight-bold"> ${{vat}}</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold"> ${{vat}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex green lighten-4 my-2">
-                            <v-list-item-title class="text-h6 font-weight-bold text-end"> Total: $ {{totalSum}}</v-list-item-title>
+                            <v-list-item-title class="text-body-1 font-weight-bold text-end"> Total: $ {{totalSum}}</v-list-item-title>
                         </v-list-item>
 
                     </v-list>
@@ -86,7 +86,7 @@ export default {
             return this.totalPrice * (5 / 100);
         },
 
-        voucher(){
+        voucher() {
             return this.getVoucher();
         },
 
@@ -102,16 +102,20 @@ export default {
         ProductCheckoutList,
     },
 
+    mounted() {
+        window.scrollTo(0, 0);
+    },
+
     methods: {
 
         getVoucher() {
-            let voucher=0;
+            let voucher = 0;
             if (this.code == "my") {
-               return voucher = (10 / 100) * this.totalPrice;
+                return voucher = (10 / 100) * this.totalPrice;
             } else {
-              return  voucher = 0
+                return voucher = 0
             }
-           
+
         }
     }
 

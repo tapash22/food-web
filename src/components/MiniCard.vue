@@ -24,8 +24,9 @@
             </v-list-item>
             <v-divider></v-divider>
             <v-list-item class="d-flex justify-center pa-0 ">
-                <v-list-item-title class="text-body-1 pa-0 font-weight-bold mx-4">Total: ${{ cardTotalPrice }}</v-list-item-title>
+                <v-list-item-title class="text-body-1 pa-0 font-weight-bold mx-1">Total: ${{ cardTotalPrice }}</v-list-item-title>
             </v-list-item>
+            <v-divider></v-divider>
         </v-list>
     </v-card-text>
 

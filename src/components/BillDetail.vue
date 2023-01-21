@@ -25,14 +25,14 @@
         </div>
 
     </v-card-text>
-    <v-card-text class="pa-0">
-        <v-list class="pa-0">
+    <!-- <v-card-text class="pa-0">
+        <v-list class="pa-0" v-if="totals">
             <v-list-item class="d-flex justify-space-between" v-for="total in totals" :key="total.id">
                 <v-list-item-title class="text-body-1  ">{{total.name}}</v-list-item-title>
                 <v-list-item-subtitle class="text-end text-body-1 ">Tk. {{total.price}}</v-list-item-subtitle>
             </v-list-item>
         </v-list>
-    </v-card-text>
+    </v-card-text> -->
 </v-card>
 </template>
 
@@ -43,36 +43,36 @@ import {
 
 export default {
     name: 'bill-detail',
-    props: ['foods', 'name', 'delivery'],
+    props: ['foods', 'name', 'delivery','totals'],
     data() {
         return {
 
-            totals: [{
-                    id: 1,
-                    name: 'Subtotal',
-                    price: 22
-                },
-                {
-                    id: 2,
-                    name: 'Delivery fee',
-                    price: 20
-                },
-                {
-                    id: 3,
-                    name: 'Platform fee',
-                    price: 3
-                },
-                {
-                    id: 4,
-                    name: 'vat',
-                    price: 5
-                },
-                {
-                    id: 5,
-                    name: 'Total',
-                    price: 50
-                }
-            ],
+            // totals: [{
+            //         id: 1,
+            //         name: 'Subtotal',
+            //         price: 22
+            //     },
+            //     {
+            //         id: 2,
+            //         name: 'Delivery fee',
+            //         price: 20
+            //     },
+            //     {
+            //         id: 3,
+            //         name: 'Platform fee',
+            //         price: 3
+            //     },
+            //     {
+            //         id: 4,
+            //         name: 'vat',
+            //         price: 5
+            //     },
+            //     {
+            //         id: 5,
+            //         name: 'Total',
+            //         price: 50
+            //     }
+            // ],
             count: 1,
         }
     },

@@ -100,6 +100,10 @@ export default {
         TypeHeader
     },
 
+    mounted() {
+        window.scrollTo(0, 0);
+    },
+
     methods: {
         season(value) {
             return this.icons[value];
