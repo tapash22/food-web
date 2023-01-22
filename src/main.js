@@ -6,6 +6,10 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
+import Vue2Editor from "vue2-editor";
+
+Vue.use(Vue2Editor);
+
 import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts)
 

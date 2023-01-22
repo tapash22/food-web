@@ -80,7 +80,27 @@ const routes = [
         path:'/admin/inbox',
         name:'inbox',
         component: () => import(/* webpackChunkName: "inbox" */ '../views/admin/pages/InboxView.vue')
-      }
+      },
+      {
+        path:'/admin/composer',
+        name:'composer',
+        component: () => import(/* webpackChunkName: "composer" */ '../views/admin/pages/ComposerView.vue')
+      },
+      {
+        path:'/admin/sent',
+        name:'sent',
+        component: () => import(/* webpackChunkName: "sent" */ '../views/admin/pages/SentView.vue')
+      },
+      {
+        path:'/admin/addrestaurant',
+        name:'addrestaurant',
+        component: () => import(/* webpackChunkName: "addrestaurant" */ '../views/admin/pages/AddRestaurant.vue')
+      },
+      {
+        path:'/admin/adddryfood',
+        name:'adddryfood',
+        component: () => import(/* webpackChunkName: "adddryfood" */ '../views/admin/pages/AddFood.vue')
+      },
     ]
   }
 

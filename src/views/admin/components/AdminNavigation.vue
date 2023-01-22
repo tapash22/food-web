@@ -97,20 +97,20 @@ export default {
                         {
                             id: 1,
                             name: 'Inbox',
-                            path: '/admin/inbox',
+                            path: 'admin/inbox',
                             icon: 'mdi-inbox-full',
 
                         },
                         {
                             id: 2,
                             name: 'EmailCompose',
-                            path: '',
+                            path: 'admin/composer',
                             icon: 'mdi-email-edit',
                         },
                         {
                             id: 3,
                             name: 'Sent',
-                            path: '',
+                            path: 'admin/sent',
                             icon: 'mdi-inbox-full',
                         },
                     ]
@@ -122,26 +122,25 @@ export default {
                     icon: 'mdi-file-find',
                     children: [{
                             id: 1,
-                            name: 'page1',
+                            name: 'Food details',
                             path: '',
                             icon: 'mdi-inbox-full',
-
                         },
                         {
                             id: 2,
-                            name: 'page2',
+                            name: 'Restaurant details',
                             path: '',
                             icon: 'mdi-email-edit',
                         },
                         {
                             id: 3,
-                            name: 'page3',
+                            name: 'User details',
                             path: '',
                             icon: 'mdi-inbox-full',
                         },
                         {
                             id: 4,
-                            name: 'page4',
+                            name: 'Billing',
                             path: '',
                             icon: 'mdi-inbox-full',
                         },
@@ -156,66 +155,19 @@ export default {
 
                         {
                             id: 1,
-                            name: 'form1',
-                            path: '',
-                            icon: 'mdi-inbox-full',
+                            name: 'Add Restaurant',
+                            path: 'admin/addrestaurant',
+                            icon: 'mdi-home',
 
                         },
                         {
                             id: 2,
-                            name: 'form2',
-                            path: '',
-                            icon: 'mdi-email-edit',
-                        },
-                        {
-                            id: 3,
-                            name: 'form3',
-                            path: '',
-                            icon: 'mdi-inbox-full',
-                        },
-                        {
-                            id: 4,
-                            name: 'form4',
-                            path: '',
-                            icon: 'mdi-inbox-full',
+                            name: 'Add Foods',
+                            path: 'admin/adddryfood',
+                            icon: 'mdi-food',
                         },
                     ]
                 },
-                {
-                    id: 5,
-                    name: 'Intro',
-                    path: '',
-                    icon: 'mdi-bio',
-                    children: [
-
-                        {
-                            id: 1,
-                            name: 'intro1',
-                            path: '',
-                            icon: 'mdi-inbox-full',
-
-                        },
-                        {
-                            id: 2,
-                            name: 'intro2',
-                            path: '',
-                            icon: 'mdi-email-edit',
-                        },
-                        {
-                            id: 3,
-                            name: 'intro3',
-                            path: '',
-                            icon: 'mdi-inbox-full',
-                        },
-                        {
-                            id: 4,
-                            name: 'intro4',
-                            path: '',
-                            icon: 'mdi-inbox-full',
-                        },
-                    ]
-                },
-
             ]
         }
     },

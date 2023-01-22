@@ -1,11 +1,11 @@
 <template>
-<div class="inbox-view">
+<div class="sent-view">
     <v-card>
-        <v-card-title class="d-flex justify-center text-uppercase">This is mail inbox</v-card-title>
-        <v-card-text class="pa-0 my-0">
+        <v-card-title class="d-flex justify-center text-uppercase">This is sent inbox</v-card-title>
+        <v-card-text class="pa-0 my-0 card-text">
             <v-list v-for="mail in mails" :key="mail.id">
-              <MessageView :mail="mail" />
-              <v-divider></v-divider>
+                <MessageView :mail="mail" />
+                 <v-divider></v-divider>
             </v-list>
         </v-card-text>
     </v-card>
@@ -16,11 +16,11 @@
 import MessageView from '../components/MessageView.vue';
 
 export default {
-    name: 'inbox-view',
+    name: 'sent-view',
 
     data() {
         return {
-    
+          
             mails: [{
                     id: 1,
                     title: 'this is title',
@@ -73,7 +73,7 @@ export default {
         }
     },
 
-    components:{
+    components: {
         MessageView
     }
 
@@ -85,5 +85,6 @@ export default {
     display: grid;
     grid-template-columns: 50px 60px 150px 1fr 100px;
     grid-template-rows: repeat(50px);
+    height: 40px;
 }
 </style>

@@ -104,6 +104,12 @@ export default {
                 min: v => (v && v.length >= 6) || "Min 6 characters"
             },
         }
+    },
+
+    methods:{
+        validate(){
+            this.$router.push('/admin')
+        }
     }
 }
 </script>
