@@ -1,31 +1,33 @@
 <template>
 <div class="d-block">
-    <label class="text-h6 my-2">{{name}}</label><br />
-    <input :type="type" :value="value" @input="updateValue" />
-
+    <!-- <label class="text-h6 my-2">{{name}}</label><br />
+    <input :type="type" :value="value" @input="updateValue($event.target.value)" /> -->
+    <form ref="form">
+        <BaseInput v-for="(value,i) in value" :key="i" :value="value[i]" />
+        <v-btn @click="send">Send</v-btn>
+    </form>
 </div>
 </template>
 
 <script>
+import BaseInput from './BaseInput.vue';
+
 export default {
-    props: ['value', 'name','type'],
+    props: ['value', '', ''],
     data() {
         return {
             form1: null
         }
     },
+    components: {
+        BaseInput
+    },
 
     methods: {
-        updateValue($event) {
-          this.form1 = $event.target.value
-            this.$emit('input', this.form1)
+        send() {
+            this.form1 = this.$refs.form
+            console.log(this.form1);
         }
     },
 }
 </script>
-
-<style scoped>
-input {
-    border: 1px solid black;
-}
-</style>

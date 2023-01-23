@@ -123,25 +123,25 @@ export default {
                     children: [{
                             id: 1,
                             name: 'Food details',
-                            path: '',
+                            path: 'admin/fooddetails',
                             icon: 'mdi-inbox-full',
                         },
                         {
                             id: 2,
                             name: 'Restaurant details',
-                            path: '',
+                            path: 'admin/restaurantdetails',
                             icon: 'mdi-email-edit',
                         },
                         {
                             id: 3,
                             name: 'User details',
-                            path: '',
+                            path: 'admin/userdetails',
                             icon: 'mdi-inbox-full',
                         },
                         {
                             id: 4,
                             name: 'Billing',
-                            path: '',
+                            path: 'admin/billing',
                             icon: 'mdi-inbox-full',
                         },
                     ]

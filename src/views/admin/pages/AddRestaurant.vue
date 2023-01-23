@@ -1,19 +1,16 @@
 <template>
 <div class="add-restaurant" style="display:block">
-    <BaseForm name="name" type="text" :value="form.name" @input="changeValue($event)" />
-    <BaseForm name="email" type="email" :value="form.email" @input="changeValue($event)" />
-    <BaseForm name="address" type="textarea" :value="form.address" @input="changeValue($event)" />
-    <BaseForm name="phone" type="number" :value="form.phone" @input="changeValue($event)" />
-    <BaseForm name="country" type="country" :value="form.country" @input="changeValue($event)" />
-    <BaseForm name="zipcode" type="number" :value="form.zipcode" @input="changeValue($event)" />
+    <BaseInput v-model="form" />
+    <!-- <BaseForm name="name" type="text" v-model="form.name"  />
+ <BaseForm name="name" type="text" v-model="form.email"  />
+ <BaseForm name="name" type="text" v-model="form.address"  /> -->
+    <br>{{form.name}}-{{form.email}}-{{form.address}}
 
-    <br>{{form.name}}-{{form.email}}-{{form.address}}-{{form.phone}}-{{form.country}}-{{form.zipcode}}
-    {{form2}}
 </div>
 </template>
 
 <script>
-import BaseForm from '../components/BaseForm.vue';
+import BaseInput from '../components/BaseInput.vue';
 
 export default {
     name: 'add-restaurant',
@@ -24,13 +21,12 @@ export default {
                 name: '',
                 email: '',
                 address: '',
-                phone: '',
-                country: '',
-                zipcode: ''
+                // phone: '',
+                // country: '',
+                // zipcode: ''
 
             },
 
-            form2: null
         }
     },
 
@@ -39,13 +35,13 @@ export default {
     },
 
     components: {
-        BaseForm
+        BaseInput
     },
 
     methods: {
-        changeValue($event) {
-            this.form = $event;
-        },
+        chengeValue() {
+            console.log(this.form)
+        }
 
     }
 }

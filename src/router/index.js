@@ -101,6 +101,26 @@ const routes = [
         name:'adddryfood',
         component: () => import(/* webpackChunkName: "adddryfood" */ '../views/admin/pages/AddFood.vue')
       },
+      {
+        path:'/admin/fooddetails',
+        name:'fooddetails',
+        component: () => import(/* webpackChunkName: "fooddetails" */ '../views/admin/pages/FoodDetails.vue')
+      },
+      {
+        path:'/admin/restaurantdetails',
+        name:'restaurantdetails',
+        component: () => import(/* webpackChunkName: "restaurantdetails" */ '../views/admin/pages/RestaurantDetails.vue')
+      },
+      {
+        path:'/admin/userdetails',
+        name:'userdetails',
+        component: () => import(/* webpackChunkName: "userdetails" */ '../views/admin/pages/UserDetails.vue')
+      },
+      {
+        path:'/admin/billing',
+        name:'billing',
+        component: () => import(/* webpackChunkName: "billing" */ '../views/admin/pages/Billing.vue')
+      },
     ]
   }
 
