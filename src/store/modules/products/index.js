@@ -263,6 +263,7 @@ export default {
     },
     getters: {
         getProductById: (state) => (id) => {
+        
             return state.products.find(product => product.id === id)
         },
         dryfoodList: (state) => {

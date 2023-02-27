@@ -5,10 +5,9 @@
     </v-icon>
     <span class="text-body-1 font-weight-bold  d-flex justify-center">{{delivery}}</span>
     <v-card-title class="text-h6 font-weight-bold d-flex justify-center ">Your Order from {{name}}</v-card-title>
-    <v-card-text class="pa-0 d-block c_text">
+    <v-card-text class="pa-0 d-block">
         <div v-if="foods" class="">
             <v-list class="pa-0 " v-for="foods in cart" :key="foods.product.id" outlined>
-
                 <v-list-item class=" d-flex justify-space-between">
                     <v-list-item-title>{{foods.product.name }}</v-list-item-title>
                     <v-list-item-subtitle class="text-end">Tk. {{foods.product.price }}</v-list-item-subtitle>
@@ -18,7 +17,6 @@
                     <span class="mx-2 text-body-1 black--text">{{foods.quantity}}</span>
                     <v-icon @click="addQuantity(foods)" color="red" class="text-h6">mdi-plus</v-icon>
                 </v-list-item>
-
             </v-list>
         </div>
         <div v-else style="display:flex;justify-content:center; align-self:center; height:100%;" class="my-10">

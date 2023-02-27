@@ -5,6 +5,7 @@
             <div class="card">
                 <div class="image">
                     <v-img class="img" :src="item.image" />
+           
                 </div>
                 <div class="details">
                     <v-list color="pa-4" elevation="2">
@@ -114,8 +115,12 @@ export default {
     computed: {
         item() {
             return this.getProductById(this.id);
+        
         },
-        ...mapGetters('products', {
+        showI(){
+            return console.log(this.item)
+        },
+        ...mapGetters('products',{
             getProductById: 'getProductById',
 
         })
