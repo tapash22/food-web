@@ -1,5 +1,5 @@
 <template>
-<v-container>
+<div>
     <!-- search -->
     <v-row class="d-flex justify-center">
         <v-col col="10" sm="10" md="8" lg="8" xl="8" class="d-block">
@@ -57,7 +57,7 @@
     </v-row>
     <!-- dryfood end-->
 
-</v-container>
+</div>
 </template>
 
 <script>
