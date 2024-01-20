@@ -21,9 +21,9 @@
     <!-- search end-->
 
     <!-- resturent -->
-    <v-row class="my-2 d-flex justify-space-around">
+    <v-row class="my-2 ">
         <TypeHeader name="Resturent" link="restaurants" />
-        <v-col cols="12" sm="12" md="3" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-2 pa-0">
+        <v-col cols="12" sm="12" md="3" lg="3" xl="3" v-for="index in countLength" :key="index" class="my-2 pa-0 " style="grid-gap:10px">
             <Resturent :resturent="resturents[index - 1]" />
         </v-col>
     </v-row>
